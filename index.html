@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>STC Pay · Corporate Travel Prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Inter","Segoe UI",sans-serif;background:#0b0b0f;color:#17171F;-webkit-font-smoothing:antialiased}
+  a{color:#4F008C;text-decoration:none} a:hover{color:#46007D}
+  ::-webkit-scrollbar{width:0;height:0;display:none}
+  @keyframes shmr{from{background-position:200% 0}to{background-position:-200% 0}}
+  [data-goto]:hover,[data-back]:hover{outline:2.5px solid rgba(0,196,140,.95);outline-offset:2px;border-radius:16px;transition:outline-color .12s}
+  [data-nav]:hover,[data-chip]:hover{filter:brightness(1.25)}
+</style>
+</head>
+<body>
+<div data-stc-proto style="height:100vh;overflow:hidden;background:radial-gradient(1200px 820px at 50% -8%,#1d1233,#0b0b0f 62%);display:flex;flex-direction:column">
+  <header style="flex:none;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px 22px;border-bottom:1px solid rgba(255,255,255,.06)">
+    <div style="display:flex;align-items:center;gap:10px">
+      <div style="width:26px;height:26px;border-radius:8px;background:#4F008C;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:13px">S</div>
+      <span style="font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.6)">STC Pay · Prototype</span>
+    </div>
+    <div style="position:relative;display:flex;align-items:center;gap:8px">
+      <div style="display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:999px;padding:5px 6px">
+        <button data-nav="prev" style="width:34px;height:34px;border-radius:999px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.08);color:#fff;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:inherit" title="Previous">‹</button>
+        <div data-dock-label style="min-width:188px;text-align:center;font-size:12.5px;font-weight:600;color:#fff;padding:0 4px">01 · Corporate Landing</div>
+        <button data-nav="next" style="width:34px;height:34px;border-radius:999px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.08);color:#fff;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:inherit" title="Next">›</button>
+        <div style="width:1px;height:20px;background:rgba(255,255,255,.14);margin:0 2px"></div>
+        <button data-nav="grid" style="height:34px;padding:0 15px;border-radius:999px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.08);color:#fff;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:6px">All screens<span style="font-size:9px;opacity:.7">▾</span></button>
+      </div>
+      <div data-jump style="display:none;position:absolute;top:48px;right:0;z-index:60;flex-direction:column;gap:3px;background:#15111f;border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:8px;box-shadow:0 26px 60px -20px rgba(0,0,0,.75);width:200px;max-height:74vh;overflow-y:auto"><button data-chip="0" data-goto="0" style="text-align:left;border:none;cursor:pointer;font-size:12px;font-weight:600;padding:9px 12px;border-radius:10px;background:#4F008C;color:#fff;font-family:inherit">01 · Landing</button><button data-chip="1" data-goto="1" style="text-align:left;border:none;cursor:pointer;font-size:12px;font-weight:600;padding:9px 12px;border-radius:10px;background:transparent;color:rgba(255,255,255,.72);font-family:inherit">02 · Workspace</button><button data-chip="2" data-goto="2" style="text-align:left;border:none;cursor:pointer;font-size:12px;font-weight:600;padding:9px 12px;border-radius:10px;background:transparent;color:rgba(255,255,255,.72);font-family:inherit">03 · Create Trip</button><button data-chip="3" data-goto="3" style="text-align:left;border:none;cursor:pointer;font-size:12px;font-weight:600;padding:9px 12px;border-radius:10px;background:transparent;color:rgba(255,255,255,.72);font-family:inherit">04 · Planner</button><button data-chip="4" data-goto="4" style="text-align:left;border:none;cursor:pointer;font-size:12px;font-weight:600;padding:9px 12px;border-radius:10px;background:transparent;color:rgba(255,255,255,.72);font-family:inherit">05 · Booking</button><button data-chip="5" data-goto="5" style="text-align:left;border:none;cursor:pointer;font-size:12px;font-weight:600;padding:9px 12px;border-radius:10px;background:transparent;color:rgba(255,255,255,.72);font-family:inherit">06 · Allowance</button><button data-chip="6" data-goto="6" style="text-align:left;border:none;cursor:pointer;font-size:12px;font-weight:600;padding:9px 12px;border-radius:10px;background:transparent;color:rgba(255,255,255,.72);font-family:inherit">07 · Card</button><button data-chip="7" data-goto="7" style="text-align:left;border:none;cursor:pointer;font-size:12px;font-weight:600;padding:9px 12px;border-radius:10px;background:transparent;color:rgba(255,255,255,.72);font-family:inherit">08 · Expense</button><button data-chip="8" data-goto="8" style="text-align:left;border:none;cursor:pointer;font-size:12px;font-weight:600;padding:9px 12px;border-radius:10px;background:transparent;color:rgba(255,255,255,.72);font-family:inherit">09 · VAT</button><button data-chip="9" data-goto="9" style="text-align:left;border:none;cursor:pointer;font-size:12px;font-weight:600;padding:9px 12px;border-radius:10px;background:transparent;color:rgba(255,255,255,.72);font-family:inherit">10 · Manager</button><button data-chip="10" data-goto="10" style="text-align:left;border:none;cursor:pointer;font-size:12px;font-weight:600;padding:9px 12px;border-radius:10px;background:transparent;color:rgba(255,255,255,.72);font-family:inherit">11 · Project</button></div>
+    </div>
+  </header>
+  <main data-stage-main style="flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding:12px 20px">
+    <div data-phone-fit style="position:relative;width:392px;height:868px">
+      <div data-phone-inner style="position:absolute;top:0;left:50%;transform:translateX(-50%);transform-origin:top center;width:392px;height:868px">
+<div data-proto-index="0" style="position:absolute;top:0;left:0;display:block"><div data-screen-label="01" style="width:392px;height:868px;background:#F5F5F8;border-radius:48px;box-shadow:0 40px 90px -24px rgba(26,26,36,.42),0 0 0 11px #0d0d12,0 0 0 12px #33333d;overflow:hidden;position:relative;display:flex;flex-direction:column">
+        <div style="height:56px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 34px 0 38px;font-size:15px;font-weight:600">
+          <span style="letter-spacing:-.02em">9:41</span>
+          <div style="display:flex;gap:8px;align-items:center">
+            <svg width="18" height="12" viewBox="0 0 18 12" fill="#17171F"><rect x="0" y="7" width="3" height="5" rx="1"/><rect x="5" y="4.5" width="3" height="7.5" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1" opacity=".3"/></svg>
+            <svg width="17" height="12" viewBox="0 0 24 24" fill="none" stroke="#17171F" stroke-width="2" stroke-linecap="round"><path d="M5 12.55a11 11 0 0 1 14 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+            <svg width="26" height="13" viewBox="0 0 26 13" fill="none"><rect x="1" y="1" width="21" height="11" rx="3" stroke="#17171F" stroke-opacity=".4"/><rect x="3" y="3" width="16" height="7" rx="1.5" fill="#17171F"/><rect x="23.5" y="4.5" width="1.5" height="4" rx=".75" fill="#17171F" fill-opacity=".4"/></svg>
+          </div>
+        </div>
+        <div style="flex:1;overflow-y:auto;padding:10px 24px 30px;display:flex;flex-direction:column">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:22px">
+            <div>
+              <div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#9A9BA8">Good to go</div>
+              <div style="font-size:30px;font-weight:800;letter-spacing:-.03em;line-height:1.05;margin-top:3px">Your trip</div>
+            </div>
+            <div style="width:44px;height:44px;border-radius:999px;background:#F1E7FA;color:#4F008C;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px">SA</div>
+          </div>
+
+          <!-- hero -->
+          <div style="background:#4F008C;color:#fff;border-radius:28px;padding:24px;box-shadow:0 20px 40px -18px rgba(79,0,140,.6)">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+              <span style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6)">Active trip</span>
+              <span style="display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;background:rgba(255,255,255,.16);border-radius:999px;padding:4px 10px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Approved</span>
+            </div>
+            <div style="font-size:44px;font-weight:800;letter-spacing:-.035em;line-height:1;margin-bottom:14px">London</div>
+            <div style="display:flex;gap:18px;font-size:13.5px;color:rgba(255,255,255,.82);margin-bottom:22px">
+              <span style="display:flex;align-items:center;gap:6px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>14–18 Jul</span>
+              <span style="display:flex;align-items:center;gap:6px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>Digital Transformation</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px">
+              <span style="font-size:13px;color:rgba(255,255,255,.7)">Spent <b style="color:#fff;font-weight:700">BHD 330</b></span>
+              <span style="font-size:13px;font-weight:700;color:#4BE3B6">BHD 920 left</span>
+            </div>
+            <div style="height:8px;background:rgba(255,255,255,.22);border-radius:999px;overflow:hidden"><i style="display:block;height:100%;width:26%;background:#00C48C;border-radius:999px"></i></div>
+          </div>
+
+          <!-- module grid -->
+          <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#9A9BA8;margin:22px 0 12px">Everything, one tap away</div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:56px;height:56px;border-radius:18px;background:#fff;box-shadow:0 1px 2px rgba(20,20,30,.05),0 10px 24px -14px rgba(20,20,30,.14);display:flex;align-items:center;justify-content:center;color:#4F008C"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><span style="font-size:11px;font-weight:600;color:#48495A;text-align:center;line-height:13px">Upcoming Trips</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:56px;height:56px;border-radius:18px;background:#fff;box-shadow:0 1px 2px rgba(20,20,30,.05),0 10px 24px -14px rgba(20,20,30,.14);display:flex;align-items:center;justify-content:center;color:#4F008C"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div><span style="font-size:11px;font-weight:600;color:#48495A;text-align:center;line-height:13px">My Cards</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:56px;height:56px;border-radius:18px;background:#fff;box-shadow:0 1px 2px rgba(20,20,30,.05),0 10px 24px -14px rgba(20,20,30,.14);display:flex;align-items:center;justify-content:center;color:#4F008C"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M14 8H8"/><path d="M16 12H8"/><path d="M13 16H8"/></svg></div><span style="font-size:11px;font-weight:600;color:#48495A;text-align:center;line-height:13px">Expenses</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:56px;height:56px;border-radius:18px;background:#fff;box-shadow:0 1px 2px rgba(20,20,30,.05),0 10px 24px -14px rgba(20,20,30,.14);display:flex;align-items:center;justify-content:center;color:#4F008C"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg></div><span style="font-size:11px;font-weight:600;color:#48495A;text-align:center;line-height:13px">Invoices</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:56px;height:56px;border-radius:18px;background:#fff;box-shadow:0 1px 2px rgba(20,20,30,.05),0 10px 24px -14px rgba(20,20,30,.14);display:flex;align-items:center;justify-content:center;color:#4F008C"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.7 9a.6.6 0 0 1-.6 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.2-2.7a1.2 1.2 0 0 1 1.6 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z"/></svg></div><span style="font-size:11px;font-weight:600;color:#48495A;text-align:center;line-height:13px">Trip Policies</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:56px;height:56px;border-radius:18px;background:#fff;box-shadow:0 1px 2px rgba(20,20,30,.05),0 10px 24px -14px rgba(20,20,30,.14);display:flex;align-items:center;justify-content:center;color:#4F008C"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div><span style="font-size:11px;font-weight:600;color:#48495A;text-align:center;line-height:13px">Approvals</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:56px;height:56px;border-radius:18px;background:#fff;box-shadow:0 1px 2px rgba(20,20,30,.05),0 10px 24px -14px rgba(20,20,30,.14);display:flex;align-items:center;justify-content:center;color:#4F008C"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg></div><span style="font-size:11px;font-weight:600;color:#48495A;text-align:center;line-height:13px">VAT Claims</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:56px;height:56px;border-radius:18px;background:#fff;box-shadow:0 1px 2px rgba(20,20,30,.05),0 10px 24px -14px rgba(20,20,30,.14);display:flex;align-items:center;justify-content:center;color:#4F008C"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5Zm18 0h-3a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-5Z"/><path d="M21 11a9 9 0 0 0-18 0"/></svg></div><span style="font-size:11px;font-weight:600;color:#48495A;text-align:center;line-height:13px">Support</span></div>
+          </div>
+
+          <!-- recent trips -->
+          <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#9A9BA8;margin:24px 0 12px">Recent trips</div>
+          <div style="background:#fff;border-radius:20px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 12px 30px -18px rgba(20,20,30,.13);overflow:hidden">
+            <div style="display:flex;align-items:center;gap:13px;padding:13px 16px"><div style="width:36px;height:36px;border-radius:12px;background:#F5F5F8;color:#6A6B79;display:flex;align-items:center;justify-content:center;flex:none"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div><div style="flex:1;min-width:0"><b style="font-size:13.5px;font-weight:600;display:block">Manama · 2–4 Jun</b><small style="font-size:11.5px;color:#8A8B98">Vendor Onboarding</small></div><div style="text-align:right"><b style="font-size:13.5px;font-variant-numeric:tabular-nums">BHD 640</b><div style="font-size:10.5px;color:#8A8B98">reconciled</div></div></div>
+          </div>
+
+          <!-- needs attention -->
+          <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#9A9BA8;margin:24px 0 12px">Needs attention · 2</div>
+          <div style="background:#fff;border-radius:20px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 12px 30px -16px rgba(20,20,30,.14);overflow:hidden">
+            <div style="display:flex;align-items:center;gap:13px;padding:15px 16px">
+              <div style="width:40px;height:40px;border-radius:13px;background:#FBF2E3;color:#B76E00;display:flex;align-items:center;justify-content:center;flex:none"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+              <div style="flex:1;min-width:0"><b style="display:block;font-size:14px;font-weight:600">Upcoming approval</b><small style="display:block;font-size:11.5px;color:#8A8B98;margin-top:1px">Hotel upgrade — Marriott Canary Wharf</small></div>
+              <span style="font-size:11px;font-weight:700;color:#B76E00;background:#FBF2E3;border-radius:999px;padding:4px 9px;flex:none">2h</span>
+            </div>
+            <div style="height:1px;background:#F0F0F4"></div>
+            <div style="display:flex;align-items:center;gap:13px;padding:15px 16px">
+              <div style="width:40px;height:40px;border-radius:13px;background:#F1E7FA;color:#4F008C;display:flex;align-items:center;justify-content:center;flex:none"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M14 8H8"/><path d="M16 12H8"/><path d="M13 16H8"/></svg></div>
+              <div style="flex:1;min-width:0"><b style="display:block;font-size:14px;font-weight:600">Pending expense claims</b><small style="display:block;font-size:11.5px;color:#8A8B98;margin-top:1px">2 receipts not yet reconciled</small></div>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C6C7D2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            </div>
+          </div>
+        </div>
+      </div></div>
+<div data-proto-index="1" style="position:absolute;top:0;left:0;display:none"><div data-screen-label="02" style="width:392px;height:868px;background:#F5F5F8;border-radius:48px;box-shadow:0 40px 90px -24px rgba(26,26,36,.42),0 0 0 11px #0d0d12,0 0 0 12px #33333d;overflow:hidden;position:relative;display:flex;flex-direction:column">
+        <div style="height:56px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 34px 0 38px;font-size:15px;font-weight:600">
+          <span style="letter-spacing:-.02em">9:41</span>
+          <div style="display:flex;gap:8px;align-items:center">
+            <svg width="18" height="12" viewBox="0 0 18 12" fill="#17171F"><rect x="0" y="7" width="3" height="5" rx="1"/><rect x="5" y="4.5" width="3" height="7.5" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1" opacity=".3"/></svg>
+            <svg width="17" height="12" viewBox="0 0 24 24" fill="none" stroke="#17171F" stroke-width="2" stroke-linecap="round"><path d="M5 12.55a11 11 0 0 1 14 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+            <svg width="26" height="13" viewBox="0 0 26 13" fill="none"><rect x="1" y="1" width="21" height="11" rx="3" stroke="#17171F" stroke-opacity=".4"/><rect x="3" y="3" width="16" height="7" rx="1.5" fill="#17171F"/><rect x="23.5" y="4.5" width="1.5" height="4" rx=".75" fill="#17171F" fill-opacity=".4"/></svg>
+          </div>
+        </div>
+        <div style="flex:1;overflow-y:auto;padding:10px 24px 30px;display:flex;flex-direction:column">
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px">
+            <div style="width:44px;height:44px;border-radius:999px;background:#fff;box-shadow:0 1px 2px rgba(20,20,30,.05),0 8px 20px -12px rgba(20,20,30,.16);display:flex;align-items:center;justify-content:center;color:#48495A;flex:none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></div>
+            <div>
+              <div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#9A9BA8">London · 14–18 Jul</div>
+              <div style="font-size:28px;font-weight:800;letter-spacing:-.03em;line-height:1.05;margin-top:2px">Trip workspace</div>
+            </div>
+          </div>
+
+          <!-- KPI: budget hero + stat row -->
+          <div style="background:#fff;border-radius:24px;padding:20px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 14px 34px -18px rgba(20,20,30,.14);margin-bottom:12px">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px">
+              <div><div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#9A9BA8;margin-bottom:7px">Budget left</div><div style="font-size:34px;font-weight:800;letter-spacing:-.03em;color:#00795A;font-variant-numeric:tabular-nums;line-height:1">BHD 920</div></div>
+              <span style="font-size:11px;font-weight:700;color:#4F008C;background:#F1E7FA;border-radius:999px;padding:5px 11px">Day 1 of 5</span>
+            </div>
+            <div style="height:9px;background:#EEEEF2;border-radius:999px;overflow:hidden;margin-bottom:9px"><i style="display:block;height:100%;width:26%;background:#00A876;border-radius:999px"></i></div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;color:#8A8B98"><span><b style="color:#17171F;font-weight:700">BHD 330</b> spent</span><span>of BHD 1,250</span></div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:12px">
+            <div style="background:#fff;border-radius:18px;padding:15px 14px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 10px 24px -18px rgba(20,20,30,.12)"><div style="font-size:23px;font-weight:800;letter-spacing:-.02em;color:#00795A;font-variant-numeric:tabular-nums;line-height:1">41</div><div style="font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#9A9BA8;margin-top:7px">VAT back</div></div>
+            <div style="background:#fff;border-radius:18px;padding:15px 14px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 10px 24px -18px rgba(20,20,30,.12)"><div style="font-size:23px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1">4</div><div style="font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#9A9BA8;margin-top:7px">Invoices</div></div>
+            <div style="background:#fff;border-radius:18px;padding:15px 14px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 10px 24px -18px rgba(20,20,30,.12)"><div style="width:26px;height:26px;border-radius:9px;background:#E6F7F1;color:#00795A;display:flex;align-items:center;justify-content:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div><div style="font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#9A9BA8;margin-top:9px">Approved</div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;background:#fff;border-radius:20px;padding:16px 18px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 12px 30px -18px rgba(20,20,30,.13)">
+            <div style="width:44px;height:30px;border-radius:7px;background:linear-gradient(150deg,#4F008C,#46007D);display:flex;align-items:center;justify-content:center;flex:none"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div>
+            <div style="flex:1"><div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#9A9BA8">Virtual card</div><div style="font-size:15px;font-weight:700;margin-top:2px">Trip-specific · •• 4821</div></div>
+            <span style="display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#00795A;background:#E6F7F1;border-radius:999px;padding:5px 11px"><span style="width:6px;height:6px;border-radius:50%;background:#00C48C"></span>Active</span>
+          </div>
+
+          <!-- quick actions -->
+          <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#9A9BA8;margin:24px 0 14px">Quick actions</div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px 12px">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:9px"><div style="width:58px;height:58px;border-radius:20px;background:#4F008C;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 24px -14px rgba(79,0,140,.7)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg></div><span style="font-size:11px;font-weight:600;color:#48495A;text-align:center;line-height:13px">Plan Trip</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:9px"><div style="width:58px;height:58px;border-radius:20px;background:#4F008C;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 24px -14px rgba(79,0,140,.7)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg></div><span style="font-size:11px;font-weight:600;color:#48495A;text-align:center;line-height:13px">Book Travel</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:9px"><div style="width:58px;height:58px;border-radius:20px;background:#4F008C;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 24px -14px rgba(79,0,140,.7)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div><span style="font-size:11px;font-weight:600;color:#48495A;text-align:center;line-height:13px">Generate VCC</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:9px"><div style="width:58px;height:58px;border-radius:20px;background:#4F008C;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 24px -14px rgba(79,0,140,.7)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div><span style="font-size:11px;font-weight:600;color:#48495A;text-align:center;line-height:13px">Upload Invoice</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:9px"><div style="width:58px;height:58px;border-radius:20px;background:#00C48C;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 24px -14px rgba(0,196,140,.7)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg></div><span style="font-size:11px;font-weight:600;color:#48495A;text-align:center;line-height:13px">Taxi</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:9px"><div style="width:58px;height:58px;border-radius:20px;background:#00C48C;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 24px -14px rgba(0,196,140,.7)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></div><span style="font-size:11px;font-weight:600;color:#48495A;text-align:center;line-height:13px">Restaurant</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:9px"><div style="width:58px;height:58px;border-radius:20px;background:#00C48C;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 24px -14px rgba(0,196,140,.7)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg></div><span style="font-size:11px;font-weight:600;color:#48495A;text-align:center;line-height:13px">Allowance</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:9px"><div style="width:58px;height:58px;border-radius:20px;background:#00C48C;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 24px -14px rgba(0,196,140,.7)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div><span style="font-size:11px;font-weight:600;color:#48495A;text-align:center;line-height:13px">Request Top-up</span></div>
+          </div>
+
+          <!-- whats next -->
+          <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#9A9BA8;margin:24px 0 12px">What's next</div>
+          <div style="background:#fff;border-radius:22px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 12px 30px -16px rgba(20,20,30,.13);overflow:hidden">
+            <div style="display:flex;align-items:center;gap:14px;padding:15px 18px">
+              <div style="width:40px;height:40px;border-radius:13px;background:#F1E7FA;color:#4F008C;display:flex;align-items:center;justify-content:center;flex:none"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg></div>
+              <div style="flex:1"><b style="display:block;font-size:14px;font-weight:600">Airport pickup</b><small style="font-size:12px;color:#8A8B98">Careem · 05:30 · booked</small></div>
+              <span style="display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;color:#00795A;background:#E6F7F1;border-radius:999px;padding:4px 9px"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+            </div>
+            <div style="height:1px;background:#F0F0F4"></div>
+            <div style="display:flex;align-items:center;gap:14px;padding:15px 18px">
+              <div style="width:40px;height:40px;border-radius:13px;background:#F1E7FA;color:#4F008C;display:flex;align-items:center;justify-content:center;flex:none"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg></div>
+              <div style="flex:1"><b style="display:block;font-size:14px;font-weight:600">Flight to London</b><small style="font-size:12px;color:#8A8B98">GF 003 · 14 Jul · booked</small></div>
+              <span style="display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;color:#00795A;background:#E6F7F1;border-radius:999px;padding:4px 9px"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+            </div>
+            <div style="height:1px;background:#F0F0F4"></div>
+            <div style="display:flex;align-items:center;gap:14px;padding:15px 18px">
+              <div style="width:40px;height:40px;border-radius:13px;background:#FBF2E3;color:#B76E00;display:flex;align-items:center;justify-content:center;flex:none"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg></div>
+              <div style="flex:1"><b style="display:block;font-size:14px;font-weight:600">Hotel upgrade</b><small style="font-size:12px;color:#8A8B98">Marriott · needs approval</small></div>
+              <span style="font-size:11px;font-weight:700;color:#B76E00;background:#FBF2E3;border-radius:999px;padding:4px 10px">2h</span>
+            </div>
+            <div style="height:1px;background:#F0F0F4"></div>
+            <div style="display:flex;align-items:center;justify-content:center;gap:7px;padding:14px 18px;font-size:13px;font-weight:600;color:#4F008C">View full timeline <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+          </div>
+        </div>
+      </div></div>
+<div data-proto-index="2" style="position:absolute;top:0;left:0;display:none"><div data-screen-label="03" style="width:392px;height:868px;background:#F5F5F8;border-radius:48px;box-shadow:0 40px 90px -24px rgba(26,26,36,.42),0 0 0 11px #0d0d12,0 0 0 12px #33333d;overflow:hidden;position:relative;display:flex;flex-direction:column">
+        <div style="height:56px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 34px 0 38px;font-size:15px;font-weight:600">
+          <span style="letter-spacing:-.02em">9:41</span>
+          <div style="display:flex;gap:8px;align-items:center">
+            <svg width="18" height="12" viewBox="0 0 18 12" fill="#17171F"><rect x="0" y="7" width="3" height="5" rx="1"/><rect x="5" y="4.5" width="3" height="7.5" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1" opacity=".3"/></svg>
+            <svg width="17" height="12" viewBox="0 0 24 24" fill="none" stroke="#17171F" stroke-width="2" stroke-linecap="round"><path d="M5 12.55a11 11 0 0 1 14 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+            <svg width="26" height="13" viewBox="0 0 26 13" fill="none"><rect x="1" y="1" width="21" height="11" rx="3" stroke="#17171F" stroke-opacity=".4"/><rect x="3" y="3" width="16" height="7" rx="1.5" fill="#17171F"/><rect x="23.5" y="4.5" width="1.5" height="4" rx=".75" fill="#17171F" fill-opacity=".4"/></svg>
+          </div>
+        </div>
+        <div style="flex:1;overflow-y:auto;padding:10px 24px 30px;display:flex;flex-direction:column">
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:24px">
+            <div style="width:44px;height:44px;border-radius:999px;background:#fff;box-shadow:0 1px 2px rgba(20,20,30,.05),0 8px 20px -12px rgba(20,20,30,.16);display:flex;align-items:center;justify-content:center;color:#48495A;flex:none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></div>
+            <div style="font-size:30px;font-weight:800;letter-spacing:-.03em;line-height:1.05">New trip</div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <div style="display:flex;align-items:center;gap:14px;background:#fff;border-radius:18px;padding:16px 18px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 10px 26px -16px rgba(20,20,30,.12)">
+              <div style="width:40px;height:40px;border-radius:12px;background:#F1E7FA;color:#4F008C;display:flex;align-items:center;justify-content:center;flex:none"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
+              <div style="flex:1"><div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#9A9BA8">Destination</div><div style="font-size:16px;font-weight:600;margin-top:2px">London</div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:14px;background:#fff;border-radius:18px;padding:16px 18px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 10px 26px -16px rgba(20,20,30,.12)">
+              <div style="width:40px;height:40px;border-radius:12px;background:#F1E7FA;color:#4F008C;display:flex;align-items:center;justify-content:center;flex:none"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+              <div style="flex:1"><div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#9A9BA8">Dates</div><div style="font-size:16px;font-weight:600;margin-top:2px">14 – 18 Jul</div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:14px;background:#fff;border-radius:18px;padding:16px 18px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 10px 26px -16px rgba(20,20,30,.12)">
+              <div style="width:40px;height:40px;border-radius:12px;background:#F1E7FA;color:#4F008C;display:flex;align-items:center;justify-content:center;flex:none"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></svg></div>
+              <div style="flex:1"><div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#9A9BA8">Purpose</div><div style="font-size:16px;font-weight:600;margin-top:2px">Customer Workshop</div></div>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C6C7D2" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </div>
+            <div style="display:flex;align-items:center;gap:14px;background:#fff;border-radius:18px;padding:16px 18px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 10px 26px -16px rgba(20,20,30,.12)">
+              <div style="width:40px;height:40px;border-radius:12px;background:#F1E7FA;color:#4F008C;display:flex;align-items:center;justify-content:center;flex:none"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+              <div style="flex:1"><div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#9A9BA8">Project</div><div style="font-size:16px;font-weight:600;margin-top:2px">Digital Transformation</div></div>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C6C7D2" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </div>
+            <div style="display:flex;align-items:center;gap:7px;font-size:11.5px;color:#9A9BA8;padding:0 2px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#9A9BA8" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.7 9a.6.6 0 0 1-.6 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.2-2.7a1.2 1.2 0 0 1 1.6 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z"/></svg>Approver routes automatically from the selected project</div>
+          </div>
+
+          <!-- auto-linked -->
+          <div style="display:flex;align-items:center;gap:8px;margin:24px 0 12px">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00795A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></svg>
+            <span style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#00795A">Auto-linked</span>
+          </div>
+          <div style="background:#fff;border-radius:22px;padding:6px 18px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 12px 30px -16px rgba(20,20,30,.13);box-shadow:inset 0 0 0 1.5px rgba(0,121,90,.35),0 12px 30px -18px rgba(20,20,30,.14)">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid #F0F0F4"><span style="font-size:13.5px;color:#8A8B98">Client</span><b style="font-size:14px;font-weight:600">Gulf Retail Group</b></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid #F0F0F4"><span style="font-size:13.5px;color:#8A8B98">Cost centre</span><b style="font-size:14px;font-weight:600">CC-4102</b></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid #F0F0F4"><span style="font-size:13.5px;color:#8A8B98">Department</span><b style="font-size:14px;font-weight:600">Client Solutions</b></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid #F0F0F4"><span style="font-size:13.5px;color:#8A8B98">Manager</span><b style="font-size:14px;font-weight:600;display:flex;align-items:center;gap:6px">John Smith <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00795A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></b></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:13px 0"><span style="font-size:13.5px;color:#8A8B98">Traveller</span><b style="font-size:14px;font-weight:600;display:flex;align-items:center;gap:6px">Sara Ahmed <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00795A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></b></div>
+          </div>
+
+          <button style="margin-top:auto;height:54px;border-radius:999px;border:none;background:#4F008C;color:#fff;font-size:16px;font-weight:600;font-family:inherit;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 14px 30px -14px rgba(79,0,140,.7)">Create trip <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+        </div>
+      </div></div>
+<div data-proto-index="3" style="position:absolute;top:0;left:0;display:none"><div data-screen-label="04" style="width:392px;height:868px;background:#F5F5F8;border-radius:48px;box-shadow:0 40px 90px -24px rgba(26,26,36,.42),0 0 0 11px #0d0d12,0 0 0 12px #33333d;overflow:hidden;position:relative;display:flex;flex-direction:column">
+        <div style="height:56px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 34px 0 38px;font-size:15px;font-weight:600">
+          <span style="letter-spacing:-.02em">9:41</span>
+          <div style="display:flex;gap:8px;align-items:center">
+            <svg width="18" height="12" viewBox="0 0 18 12" fill="#17171F"><rect x="0" y="7" width="3" height="5" rx="1"/><rect x="5" y="4.5" width="3" height="7.5" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1" opacity=".3"/></svg>
+            <svg width="17" height="12" viewBox="0 0 24 24" fill="none" stroke="#17171F" stroke-width="2" stroke-linecap="round"><path d="M5 12.55a11 11 0 0 1 14 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+            <svg width="26" height="13" viewBox="0 0 26 13" fill="none"><rect x="1" y="1" width="21" height="11" rx="3" stroke="#17171F" stroke-opacity=".4"/><rect x="3" y="3" width="16" height="7" rx="1.5" fill="#17171F"/><rect x="23.5" y="4.5" width="1.5" height="4" rx=".75" fill="#17171F" fill-opacity=".4"/></svg>
+          </div>
+        </div>
+        <div style="flex:1;overflow-y:auto;padding:10px 24px 30px;display:flex;flex-direction:column">
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:8px">
+            <div style="width:44px;height:44px;border-radius:999px;background:#fff;box-shadow:0 1px 2px rgba(20,20,30,.05),0 8px 20px -12px rgba(20,20,30,.16);display:flex;align-items:center;justify-content:center;color:#48495A;flex:none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></div>
+            <div style="font-size:30px;font-weight:800;letter-spacing:-.03em;line-height:1.05">Planner</div>
+          </div>
+          <div style="display:inline-flex;align-self:flex-start;align-items:center;gap:6px;font-size:12px;font-weight:600;color:#4F008C;background:#F1E7FA;border-radius:999px;padding:5px 12px;margin:0 0 22px 58px">London · 14–18 Jul</div>
+
+          <div style="display:flex;flex-direction:column">
+            <!-- pickup booked -->
+            <div style="display:flex;gap:14px">
+              <div style="display:flex;flex-direction:column;align-items:center;width:44px;flex:none"><div style="width:44px;height:44px;border-radius:15px;background:#EEEEF2;color:#9A9BA8;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg></div><div style="flex:1;width:2px;background:#EAEAEF;min-height:10px"></div></div>
+              <div style="flex:1;background:#F7F7FA;border-radius:18px;padding:13px 16px;margin-bottom:12px"><div style="display:flex;justify-content:space-between;align-items:center"><b style="font-size:15px;font-weight:600;color:#6A6B79">Airport pickup</b><span style="display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;color:#8A8B98;background:#EEEEF2;border-radius:999px;padding:3px 9px"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Booked</span></div><small style="font-size:12.5px;color:#9A9BA8">Careem · 05:30 · to BAH</small></div>
+            </div>
+            <!-- flight booked -->
+            <div style="display:flex;gap:14px">
+              <div style="display:flex;flex-direction:column;align-items:center;width:44px;flex:none"><div style="width:44px;height:44px;border-radius:15px;background:#EEEEF2;color:#9A9BA8;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg></div><div style="flex:1;width:2px;background:#EAEAEF;min-height:10px"></div></div>
+              <div style="flex:1;background:#F7F7FA;border-radius:18px;padding:13px 16px;margin-bottom:12px"><div style="display:flex;justify-content:space-between;align-items:center"><b style="font-size:15px;font-weight:600;color:#6A6B79">Flight</b><span style="display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;color:#8A8B98;background:#EEEEF2;border-radius:999px;padding:3px 9px"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Booked</span></div><small style="font-size:12.5px;color:#9A9BA8">GF 003 · BAH → LHR · PNR X4XKQZ</small></div>
+            </div>
+            <!-- hotel needs approval -->
+            <div style="display:flex;gap:14px">
+              <div style="display:flex;flex-direction:column;align-items:center;width:44px;flex:none"><div style="width:44px;height:44px;border-radius:15px;background:#FBF2E3;color:#B76E00;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg></div><div style="flex:1;width:2px;background:#EAEAEF;min-height:10px"></div></div>
+              <div style="flex:1;background:#fff;border-radius:18px;box-shadow:0 0 0 1.5px rgba(183,110,0,.25),0 10px 26px -18px rgba(20,20,30,.14);padding:13px 16px;margin-bottom:12px"><div style="display:flex;justify-content:space-between;align-items:center"><b style="font-size:15px;font-weight:600">Hotel</b><span style="font-size:11px;font-weight:700;color:#B76E00;background:#FBF2E3;border-radius:999px;padding:3px 9px">Need approval</span></div><small style="font-size:12.5px;color:#8A8B98">Marriott · exec-floor upgrade</small></div>
+            </div>
+            <!-- office booked -->
+            <div style="display:flex;gap:14px">
+              <div style="display:flex;flex-direction:column;align-items:center;width:44px;flex:none"><div style="width:44px;height:44px;border-radius:15px;background:#EEEEF2;color:#9A9BA8;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01M16 6h.01M12 6h.01M12 10h.01M12 14h.01M16 10h.01M16 14h.01M8 10h.01M8 14h.01"/></svg></div><div style="flex:1;width:2px;background:#EAEAEF;min-height:10px"></div></div>
+              <div style="flex:1;background:#F7F7FA;border-radius:18px;padding:13px 16px;margin-bottom:12px"><div style="display:flex;justify-content:space-between;align-items:center"><b style="font-size:15px;font-weight:600;color:#6A6B79">Customer office</b><span style="font-size:11px;font-weight:600;color:#9A9BA8">15 Jul</span></div><small style="font-size:12.5px;color:#9A9BA8">Gulf Retail Group · Canary Wharf</small></div>
+            </div>
+            <!-- restaurant todo -->
+            <div style="display:flex;gap:14px">
+              <div style="display:flex;flex-direction:column;align-items:center;width:44px;flex:none"><div style="width:44px;height:44px;border-radius:15px;background:#F1E7FA;color:#4F008C;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></div><div style="flex:1;width:2px;background:#EAEAEF;min-height:10px"></div></div>
+              <div style="flex:1;background:#fff;border-radius:18px;box-shadow:0 0 0 1.5px rgba(79,0,140,.18),0 10px 26px -18px rgba(79,0,140,.18);padding:13px 16px;margin-bottom:12px"><div style="display:flex;justify-content:space-between;align-items:center"><b style="font-size:15px;font-weight:600">Restaurant</b><span style="font-size:11px;font-weight:700;color:#4F008C;background:#F1E7FA;border-radius:999px;padding:3px 10px">Add</span></div><small style="display:block;font-size:12.5px;color:#8A8B98">Within BHD 20/day allowance</small></div>
+            </div>
+            <!-- taxi todo -->
+            <div style="display:flex;gap:14px">
+              <div style="display:flex;flex-direction:column;align-items:center;width:44px;flex:none"><div style="width:44px;height:44px;border-radius:15px;background:#F1E7FA;color:#4F008C;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg></div><div style="flex:1;width:2px;background:#EAEAEF;min-height:10px"></div></div>
+              <div style="flex:1;background:#fff;border-radius:18px;box-shadow:0 0 0 1.5px rgba(79,0,140,.18),0 10px 26px -18px rgba(79,0,140,.18);padding:13px 16px;margin-bottom:12px"><div style="display:flex;justify-content:space-between;align-items:center"><b style="font-size:15px;font-weight:600">Taxi</b><span style="font-size:11px;font-weight:700;color:#4F008C;background:#F1E7FA;border-radius:999px;padding:3px 10px">Add</span></div><small style="display:block;font-size:12.5px;color:#8A8B98">Transport allowance BHD 15/day</small></div>
+            </div>
+            <!-- airport return todo -->
+            <div style="display:flex;gap:14px">
+              <div style="display:flex;flex-direction:column;align-items:center;width:44px;flex:none"><div style="width:44px;height:44px;border-radius:15px;background:#F1E7FA;color:#4F008C;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg></div></div>
+              <div style="flex:1;background:#fff;border-radius:18px;box-shadow:0 0 0 1.5px rgba(79,0,140,.18),0 10px 26px -18px rgba(79,0,140,.18);padding:13px 16px"><div style="display:flex;justify-content:space-between;align-items:center"><b style="font-size:15px;font-weight:600">Airport · return</b><span style="font-size:11px;font-weight:700;color:#4F008C;background:#F1E7FA;border-radius:999px;padding:3px 10px">Add</span></div><small style="display:block;font-size:12.5px;color:#8A8B98">LHR → BAH · 18 Jul</small></div>
+            </div>
+          </div>
+
+          <button style="margin-top:auto;height:52px;border-radius:18px;border:1.5px dashed #D6D2DE;background:transparent;color:#4F008C;font-size:15px;font-weight:600;font-family:inherit;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4F008C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>Add to timeline</button>
+        </div>
+      </div></div>
+<div data-proto-index="4" style="position:absolute;top:0;left:0;display:none"><div data-screen-label="05" style="width:392px;height:868px;background:#F5F5F8;border-radius:48px;box-shadow:0 40px 90px -24px rgba(26,26,36,.42),0 0 0 11px #0d0d12,0 0 0 12px #33333d;overflow:hidden;position:relative;display:flex;flex-direction:column">
+        <div style="height:56px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 34px 0 38px;font-size:15px;font-weight:600">
+          <span style="letter-spacing:-.02em">9:41</span>
+          <div style="display:flex;gap:8px;align-items:center">
+            <svg width="18" height="12" viewBox="0 0 18 12" fill="#17171F"><rect x="0" y="7" width="3" height="5" rx="1"/><rect x="5" y="4.5" width="3" height="7.5" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1" opacity=".3"/></svg>
+            <svg width="17" height="12" viewBox="0 0 24 24" fill="none" stroke="#17171F" stroke-width="2" stroke-linecap="round"><path d="M5 12.55a11 11 0 0 1 14 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+            <svg width="26" height="13" viewBox="0 0 26 13" fill="none"><rect x="1" y="1" width="21" height="11" rx="3" stroke="#17171F" stroke-opacity=".4"/><rect x="3" y="3" width="16" height="7" rx="1.5" fill="#17171F"/><rect x="23.5" y="4.5" width="1.5" height="4" rx=".75" fill="#17171F" fill-opacity=".4"/></svg>
+          </div>
+        </div>
+        <div style="flex:1;overflow-y:auto;padding:10px 24px 30px;display:flex;flex-direction:column">
+          <div style="font-size:30px;font-weight:800;letter-spacing:-.03em;line-height:1.05;margin-bottom:18px">Book a stay</div>
+
+          <!-- category chips -->
+          <div style="display:flex;gap:10px;overflow-x:auto;margin:0 -24px 20px;padding:0 24px 4px">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:7px;flex:none"><div style="width:52px;height:52px;border-radius:16px;background:#fff;color:#8A8B98;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 2px rgba(20,20,30,.05)"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg></div><span style="font-size:11px;font-weight:600;color:#9A9BA8">Flights</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:7px;flex:none"><div style="width:52px;height:52px;border-radius:16px;background:#4F008C;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 22px -14px rgba(79,0,140,.7)"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg></div><span style="font-size:11px;font-weight:700;color:#4F008C">Hotels</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:7px;flex:none"><div style="width:52px;height:52px;border-radius:16px;background:#fff;color:#8A8B98;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 2px rgba(20,20,30,.05)"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg></div><span style="font-size:11px;font-weight:600;color:#9A9BA8">Taxi</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:7px;flex:none"><div style="width:52px;height:52px;border-radius:16px;background:#fff;color:#8A8B98;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 2px rgba(20,20,30,.05)"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg></div><span style="font-size:11px;font-weight:600;color:#9A9BA8">Transfer</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:7px;flex:none"><div style="width:52px;height:52px;border-radius:16px;background:#fff;color:#8A8B98;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 2px rgba(20,20,30,.05)"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg></div><span style="font-size:11px;font-weight:600;color:#9A9BA8">Visa</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:7px;flex:none"><div style="width:52px;height:52px;border-radius:16px;background:#fff;color:#8A8B98;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 2px rgba(20,20,30,.05)"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.7 9a.6.6 0 0 1-.6 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.2-2.7a1.2 1.2 0 0 1 1.6 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z"/></svg></div><span style="font-size:11px;font-weight:600;color:#9A9BA8">Insurance</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:7px;flex:none"><div style="width:52px;height:52px;border-radius:16px;background:#fff;color:#8A8B98;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 2px rgba(20,20,30,.05)"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg></div><span style="font-size:11px;font-weight:600;color:#9A9BA8">Forex</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:7px;flex:none"><div style="width:52px;height:52px;border-radius:16px;background:#fff;color:#8A8B98;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 2px rgba(20,20,30,.05)"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></svg></div><span style="font-size:11px;font-weight:600;color:#9A9BA8">Activities</span></div>
+          </div>
+
+          <!-- recommended -->
+          <div style="background:#fff;border-radius:22px;box-shadow:0 0 0 2px #00C48C,0 14px 34px -18px rgba(0,196,140,.5);padding:18px;margin-bottom:14px">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:12px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00795A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></svg><span style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#00795A">Best compliant value</span></div>
+            <div style="font-size:18px;font-weight:700;letter-spacing:-.01em">Marriott Canary Wharf</div>
+            <div style="font-size:12.5px;color:#8A8B98;margin-top:2px">4★ · 0.3 km from customer office</div>
+            <div style="display:flex;align-items:flex-end;gap:14px;margin:16px 0">
+              <div><div style="font-size:11px;font-weight:600;color:#B4B5C0;text-transform:uppercase;letter-spacing:.06em">Public</div><div style="font-size:17px;font-weight:600;color:#B4B5C0;text-decoration:line-through;font-variant-numeric:tabular-nums">£168</div></div>
+              <div><div style="font-size:11px;font-weight:700;color:#00795A;text-transform:uppercase;letter-spacing:.06em">Corporate</div><div style="font-size:24px;font-weight:800;color:#00795A;font-variant-numeric:tabular-nums;letter-spacing:-.02em">£141</div></div>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+              <span style="display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:700;color:#00795A;background:#E6F7F1;border-radius:999px;padding:5px 11px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>In policy</span>
+              <button style="height:40px;padding:0 22px;border-radius:999px;border:none;background:#4F008C;color:#fff;font-size:14px;font-weight:600;font-family:inherit;cursor:pointer">Book</button>
+            </div>
+          </div>
+
+          <!-- compliant option -->
+          <div style="background:#fff;border-radius:22px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 12px 30px -18px rgba(20,20,30,.14);padding:18px;margin-bottom:14px">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start"><div><div style="font-size:16px;font-weight:600">Hilton Docklands</div><div style="font-size:12.5px;color:#8A8B98;margin-top:2px">4★ · 1.1 km · breakfast incl.</div></div></div>
+            <div style="display:flex;align-items:flex-end;gap:14px;margin:12px 0">
+              <div><div style="font-size:11px;font-weight:600;color:#B4B5C0;text-transform:uppercase;letter-spacing:.06em">Public</div><div style="font-size:15px;font-weight:600;color:#B4B5C0;text-decoration:line-through;font-variant-numeric:tabular-nums">£155</div></div>
+              <div><div style="font-size:11px;font-weight:700;color:#00795A;text-transform:uppercase;letter-spacing:.06em">Corporate</div><div style="font-size:21px;font-weight:800;color:#00795A;font-variant-numeric:tabular-nums;letter-spacing:-.02em">£149</div></div>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+              <span style="display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:700;color:#00795A;background:#E6F7F1;border-radius:999px;padding:5px 11px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>In policy</span>
+              <button style="height:40px;padding:0 22px;border-radius:999px;border:none;background:#4F008C;color:#fff;font-size:14px;font-weight:600;font-family:inherit;cursor:pointer">Book</button>
+            </div>
+          </div>
+
+          <!-- out of policy -->
+          <div style="background:#fff;border-radius:22px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 12px 30px -18px rgba(20,20,30,.14);padding:18px;margin-bottom:14px">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start"><div><div style="font-size:16px;font-weight:600">Shangri-La The Shard</div><div style="font-size:12.5px;color:#8A8B98;margin-top:2px">5★ · 2.4 km · river view</div></div><div style="font-size:20px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.02em">£289</div></div>
+            <div style="display:flex;align-items:center;gap:8px;margin-top:14px"><span style="display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:700;color:#B76E00;background:#FBF2E3;border-radius:999px;padding:5px 11px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>Out of policy · needs reason</span></div>
+          </div>
+
+          <!-- streaming skeleton -->
+          <div style="background:#fff;border-radius:22px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 12px 30px -18px rgba(20,20,30,.14);padding:18px;display:flex;align-items:center;gap:12px">
+            <div style="flex:1"><div style="height:13px;width:65%;border-radius:6px;background:linear-gradient(90deg,#EDEDF1 25%,#F6F6F9 50%,#EDEDF1 75%);background-size:200% 100%;animation:shmr 1.4s infinite"></div><div style="height:11px;width:40%;border-radius:6px;margin-top:8px;background:linear-gradient(90deg,#EDEDF1 25%,#F6F6F9 50%,#EDEDF1 75%);background-size:200% 100%;animation:shmr 1.4s infinite"></div></div>
+            <div style="font-size:11.5px;font-weight:600;color:#B4B5C0">Loading…</div>
+          </div>
+        </div>
+      </div></div>
+<div data-proto-index="5" style="position:absolute;top:0;left:0;display:none"><div data-screen-label="06" style="width:392px;height:868px;background:#F5F5F8;border-radius:48px;box-shadow:0 40px 90px -24px rgba(26,26,36,.42),0 0 0 11px #0d0d12,0 0 0 12px #33333d;overflow:hidden;position:relative;display:flex;flex-direction:column">
+        <div style="height:56px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 34px 0 38px;font-size:15px;font-weight:600">
+          <span style="letter-spacing:-.02em">9:41</span>
+          <div style="display:flex;gap:8px;align-items:center">
+            <svg width="18" height="12" viewBox="0 0 18 12" fill="#17171F"><rect x="0" y="7" width="3" height="5" rx="1"/><rect x="5" y="4.5" width="3" height="7.5" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1" opacity=".3"/></svg>
+            <svg width="17" height="12" viewBox="0 0 24 24" fill="none" stroke="#17171F" stroke-width="2" stroke-linecap="round"><path d="M5 12.55a11 11 0 0 1 14 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+            <svg width="26" height="13" viewBox="0 0 26 13" fill="none"><rect x="1" y="1" width="21" height="11" rx="3" stroke="#17171F" stroke-opacity=".4"/><rect x="3" y="3" width="16" height="7" rx="1.5" fill="#17171F"/><rect x="23.5" y="4.5" width="1.5" height="4" rx=".75" fill="#17171F" fill-opacity=".4"/></svg>
+          </div>
+        </div>
+        <div style="flex:1;overflow-y:auto;padding:10px 24px 30px;display:flex;flex-direction:column">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+            <div style="font-size:30px;font-weight:800;letter-spacing:-.03em;line-height:1.05">Allowance</div>
+            <span style="font-size:12px;font-weight:700;color:#4F008C;background:#F1E7FA;border-radius:999px;padding:6px 13px">Day 1 of 5</span>
+          </div>
+
+          <!-- per-diem hero meter -->
+          <div style="background:#4F008C;color:#fff;border-radius:26px;padding:22px;box-shadow:0 20px 40px -20px rgba(79,0,140,.6);margin-bottom:18px">
+            <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:8px">Daily per-diem left</div>
+            <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:16px"><span style="font-size:40px;font-weight:800;letter-spacing:-.03em;line-height:1">BHD 45</span><span style="font-size:15px;color:rgba(255,255,255,.65)">of 65</span></div>
+            <div style="height:8px;background:rgba(255,255,255,.22);border-radius:999px;overflow:hidden"><i style="display:block;height:100%;width:69%;background:#00C48C;border-radius:999px"></i></div>
+            <div style="font-size:12px;color:rgba(255,255,255,.6);margin-top:9px">Resets tomorrow, 00:00 London</div>
+          </div>
+
+          <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#9A9BA8;margin-bottom:12px">By category</div>
+          <div style="display:flex;flex-direction:column;gap:11px">
+            <!-- meals -->
+            <div style="background:#fff;border-radius:18px;padding:15px 16px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 10px 26px -18px rgba(20,20,30,.13)">
+              <div style="display:flex;align-items:center;gap:12px;margin-bottom:11px"><div style="width:38px;height:38px;border-radius:12px;background:#F5F5F8;color:#6A6B79;display:flex;align-items:center;justify-content:center;flex:none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></div><div style="flex:1"><b style="font-size:14px;font-weight:600">Daily meals</b></div><span style="font-size:13px;font-weight:700;color:#00795A;font-variant-numeric:tabular-nums">BHD 8 left</span></div>
+              <div style="height:7px;background:#EEEEF2;border-radius:999px;overflow:hidden"><i style="display:block;height:100%;width:60%;background:#00A876;border-radius:999px"></i></div>
+            </div>
+            <!-- transport -->
+            <div style="background:#fff;border-radius:18px;padding:15px 16px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 10px 26px -18px rgba(20,20,30,.13)">
+              <div style="display:flex;align-items:center;gap:12px;margin-bottom:11px"><div style="width:38px;height:38px;border-radius:12px;background:#F5F5F8;color:#6A6B79;display:flex;align-items:center;justify-content:center;flex:none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg></div><div style="flex:1"><b style="font-size:14px;font-weight:600">Transport · taxi</b></div><span style="font-size:13px;font-weight:700;color:#00795A;font-variant-numeric:tabular-nums">BHD 9 left</span></div>
+              <div style="height:7px;background:#EEEEF2;border-radius:999px;overflow:hidden"><i style="display:block;height:100%;width:40%;background:#00A876;border-radius:999px"></i></div>
+            </div>
+            <!-- entertainment EXHAUSTED -->
+            <div style="background:#fff;border-radius:18px;padding:15px 16px;box-shadow:0 0 0 1.5px rgba(183,110,0,.28),0 10px 26px -18px rgba(20,20,30,.13)">
+              <div style="display:flex;align-items:center;gap:12px;margin-bottom:11px"><div style="width:38px;height:38px;border-radius:12px;background:#FBF2E3;color:#B76E00;display:flex;align-items:center;justify-content:center;flex:none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></svg></div><div style="flex:1"><b style="font-size:14px;font-weight:600">Entertainment</b></div><span style="font-size:12px;font-weight:700;color:#B76E00;background:#FBF2E3;border-radius:999px;padding:3px 9px">Used up</span></div>
+              <div style="height:7px;background:#EEEEF2;border-radius:999px;overflow:hidden"><i style="display:block;height:100%;width:100%;background:#B76E00;border-radius:999px"></i></div>
+              <div style="font-size:11.5px;color:#8A8B98;margin-top:8px">Policy-capped · resets tomorrow</div>
+            </div>
+            <!-- misc -->
+            <div style="background:#fff;border-radius:18px;padding:15px 16px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 10px 26px -18px rgba(20,20,30,.13)">
+              <div style="display:flex;align-items:center;gap:12px;margin-bottom:11px"><div style="width:38px;height:38px;border-radius:12px;background:#F5F5F8;color:#6A6B79;display:flex;align-items:center;justify-content:center;flex:none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"><path d="M20.4 6.5 17 4l-2 2h-6L7 4 3.6 6.5a1 1 0 0 0-.4 1.2L4.5 11 7 10v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V10l2.5 1 1.3-3.3a1 1 0 0 0-.4-1.2Z"/></svg></div><div style="flex:1"><b style="font-size:14px;font-weight:600">Misc · laundry</b></div><span style="font-size:13px;font-weight:700;color:#00795A;font-variant-numeric:tabular-nums">BHD 8 left</span></div>
+              <div style="height:7px;background:#EEEEF2;border-radius:999px;overflow:hidden"><i style="display:block;height:100%;width:20%;background:#00A876;border-radius:999px"></i></div>
+            </div>
+          </div>
+
+          <button style="margin-top:auto;height:52px;border-radius:999px;border:1.5px solid #E5E1EC;background:#fff;color:#4F008C;font-size:15px;font-weight:600;font-family:inherit;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4F008C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>Request an increase</button>
+        </div>
+      </div></div>
+<div data-proto-index="6" style="position:absolute;top:0;left:0;display:none"><div data-screen-label="07" style="width:392px;height:868px;background:#F5F5F8;border-radius:48px;box-shadow:0 40px 90px -24px rgba(26,26,36,.42),0 0 0 11px #0d0d12,0 0 0 12px #33333d;overflow:hidden;position:relative;display:flex;flex-direction:column">
+        <div style="height:56px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 34px 0 38px;font-size:15px;font-weight:600">
+          <span style="letter-spacing:-.02em">9:41</span>
+          <div style="display:flex;gap:8px;align-items:center">
+            <svg width="18" height="12" viewBox="0 0 18 12" fill="#17171F"><rect x="0" y="7" width="3" height="5" rx="1"/><rect x="5" y="4.5" width="3" height="7.5" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1" opacity=".3"/></svg>
+            <svg width="17" height="12" viewBox="0 0 24 24" fill="none" stroke="#17171F" stroke-width="2" stroke-linecap="round"><path d="M5 12.55a11 11 0 0 1 14 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+            <svg width="26" height="13" viewBox="0 0 26 13" fill="none"><rect x="1" y="1" width="21" height="11" rx="3" stroke="#17171F" stroke-opacity=".4"/><rect x="3" y="3" width="16" height="7" rx="1.5" fill="#17171F"/><rect x="23.5" y="4.5" width="1.5" height="4" rx=".75" fill="#17171F" fill-opacity=".4"/></svg>
+          </div>
+        </div>
+        <div style="flex:1;overflow-y:auto;padding:10px 24px 30px;display:flex;flex-direction:column">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+            <div style="font-size:30px;font-weight:800;letter-spacing:-.03em;line-height:1.05">Cards</div>
+            <span style="font-size:12px;font-weight:700;color:#4F008C;background:#F1E7FA;border-radius:999px;padding:6px 12px">2 on this trip</span>
+          </div>
+
+          <!-- card faces -->
+          <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:16px">
+            <div style="background:linear-gradient(150deg,#4F008C,#46007D);color:#fff;border-radius:24px;padding:20px;box-shadow:0 16px 30px -18px rgba(79,0,140,.55);display:flex;flex-direction:column;gap:22px">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start">
+                <div><div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6)">stc pay · Trip-specific</div><div style="font-size:19px;font-weight:600;letter-spacing:2.5px;margin-top:8px;font-variant-numeric:tabular-nums">•••• 4821</div></div>
+                <span style="display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;background:rgba(76,227,182,.22);color:#8FF3D0;border-radius:999px;padding:4px 10px"><span style="width:6px;height:6px;border-radius:50%;background:#4BE3B6"></span>Active</span>
+              </div>
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:12px;color:rgba(255,255,255,.7);margin-bottom:7px"><span>BHD 330 / 1,250 used</span><span>Expires 18 Jul</span></div>
+                <div style="height:6px;background:rgba(255,255,255,.22);border-radius:999px;overflow:hidden"><i style="display:block;height:100%;width:26%;background:#00C48C;border-radius:999px"></i></div>
+              </div>
+            </div>
+            <div style="background:linear-gradient(150deg,#00795A,#005A43);color:#fff;border-radius:24px;padding:20px;box-shadow:0 16px 30px -20px rgba(0,121,90,.45);display:flex;flex-direction:column;gap:22px;filter:grayscale(.4) brightness(.98)">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start">
+                <div><div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6)">stc pay · Taxi Card</div><div style="font-size:19px;font-weight:600;letter-spacing:2.5px;margin-top:8px;font-variant-numeric:tabular-nums">•••• 9034</div></div>
+                <span style="display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;background:rgba(255,255,255,.18);color:#fff;border-radius:999px;padding:4px 10px"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 7l-5 5-5-5M17 17l-5-5-5 5"/></svg>Frozen</span>
+              </div>
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:12px;color:rgba(255,255,255,.7);margin-bottom:7px"><span>BHD 12 / 75 used</span><span>Expires 18 Jul</span></div>
+                <div style="height:6px;background:rgba(255,255,255,.22);border-radius:999px;overflow:hidden"><i style="display:block;height:100%;width:16%;background:#fff;border-radius:999px"></i></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- card types -->
+          <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#9A9BA8;margin-bottom:10px">Card types — scoped &amp; capped</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px">
+            <span style="font-size:12px;font-weight:600;color:#fff;background:#4F008C;border-radius:999px;padding:7px 13px">Corporate</span>
+            <span style="font-size:12px;font-weight:600;color:#fff;background:#4F008C;border-radius:999px;padding:7px 13px">Trip-specific</span>
+            <span style="font-size:12px;font-weight:600;color:#fff;background:#4F008C;border-radius:999px;padding:7px 13px">One-time</span>
+            <span style="font-size:12px;font-weight:600;color:#00543E;background:#CFF3E6;border-radius:999px;padding:7px 13px">Hotel</span>
+            <span style="font-size:12px;font-weight:600;color:#00543E;background:#CFF3E6;border-radius:999px;padding:7px 13px">Taxi</span>
+            <span style="font-size:12px;font-weight:600;color:#00543E;background:#CFF3E6;border-radius:999px;padding:7px 13px">Restaurant</span>
+          </div>
+
+          <!-- controls grid -->
+          <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#9A9BA8;margin-bottom:10px">Card controls — visible, not buried</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px">
+            <div style="background:#fff;border-radius:16px;padding:14px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 10px 24px -18px rgba(20,20,30,.13);display:flex;align-items:center;gap:11px"><div style="width:34px;height:34px;border-radius:11px;background:#F1E7FA;color:#4F008C;display:flex;align-items:center;justify-content:center;flex:none"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg></div><div style="min-width:0"><div style="font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#9A9BA8">Merchant</div><div style="font-size:12.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Travel · dining</div></div></div>
+            <div style="background:#fff;border-radius:16px;padding:14px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 10px 24px -18px rgba(20,20,30,.13);display:flex;align-items:center;gap:11px"><div style="width:34px;height:34px;border-radius:11px;background:#F1E7FA;color:#4F008C;display:flex;align-items:center;justify-content:center;flex:none"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div><div style="min-width:0"><div style="font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#9A9BA8">Country</div><div style="font-size:12.5px;font-weight:600">BH · GB</div></div></div>
+            <div style="background:#fff;border-radius:16px;padding:14px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 10px 24px -18px rgba(20,20,30,.13);display:flex;align-items:center;gap:11px"><div style="width:34px;height:34px;border-radius:11px;background:#F1E7FA;color:#4F008C;display:flex;align-items:center;justify-content:center;flex:none"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg></div><div style="min-width:0"><div style="font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#9A9BA8">Currency</div><div style="font-size:12.5px;font-weight:600">Locked · BHD</div></div></div>
+            <div style="background:#fff;border-radius:16px;padding:14px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 10px 24px -18px rgba(20,20,30,.13);display:flex;align-items:center;gap:11px"><div style="width:34px;height:34px;border-radius:11px;background:#F1E7FA;color:#4F008C;display:flex;align-items:center;justify-content:center;flex:none"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div style="min-width:0"><div style="font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#9A9BA8">Limit</div><div style="font-size:12.5px;font-weight:600">BHD 1,250</div></div></div>
+            <div style="background:#fff;border-radius:16px;padding:14px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 10px 24px -18px rgba(20,20,30,.13);display:flex;align-items:center;gap:11px"><div style="width:34px;height:34px;border-radius:11px;background:#F1E7FA;color:#4F008C;display:flex;align-items:center;justify-content:center;flex:none"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><div style="min-width:0"><div style="font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#9A9BA8">Expiry</div><div style="font-size:12.5px;font-weight:600">18 Jul</div></div></div>
+            <div style="background:#fff;border-radius:16px;padding:14px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 10px 24px -18px rgba(20,20,30,.13);display:flex;align-items:center;gap:11px"><div style="width:34px;height:34px;border-radius:11px;background:#E6F7F1;color:#00795A;display:flex;align-items:center;justify-content:center;flex:none"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div><div style="min-width:0"><div style="font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#9A9BA8">Status</div><div style="font-size:12.5px;font-weight:600">Active</div></div></div>
+          </div>
+
+          <!-- recent txns -->
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px"><span style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#9A9BA8">Recent</span><span style="font-size:12px;font-weight:600;color:#4F008C">See all</span></div>
+          <div style="background:#fff;border-radius:20px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 12px 30px -18px rgba(20,20,30,.13);overflow:hidden">
+            <div style="display:flex;align-items:center;gap:12px;padding:13px 16px"><div style="width:34px;height:34px;border-radius:11px;background:#F5F5F8;color:#6A6B79;display:flex;align-items:center;justify-content:center;flex:none"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg></div><div style="flex:1;min-width:0"><b style="font-size:13.5px;font-weight:600;display:block">Gatwick Express</b><small style="font-size:11.5px;color:#8A8B98">Ground transport · 14 Jul</small></div><b style="font-size:13.5px;font-variant-numeric:tabular-nums">£24.50</b></div>
+            <div style="height:1px;background:#F0F0F4"></div>
+            <div style="display:flex;align-items:center;gap:12px;padding:13px 16px"><div style="width:34px;height:34px;border-radius:11px;background:#F5F5F8;color:#6A6B79;display:flex;align-items:center;justify-content:center;flex:none"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></div><div style="flex:1;min-width:0"><b style="font-size:13.5px;font-weight:600;display:block">Pret a Manger</b><small style="font-size:11.5px;color:#8A8B98">Dining · 14 Jul</small></div><b style="font-size:13.5px;font-variant-numeric:tabular-nums">£11.20</b></div>
+            <div style="height:1px;background:#F0F0F4"></div>
+            <div style="display:flex;align-items:flex-start;gap:12px;padding:13px 16px;background:#FDF3F3"><div style="width:34px;height:34px;border-radius:11px;background:#FBEBEB;color:#C62828;display:flex;align-items:center;justify-content:center;flex:none"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></div><div style="flex:1;min-width:0"><b style="font-size:13.5px;font-weight:600;display:block">Harrods</b><small style="font-size:11px;color:#C62828;line-height:1.3;display:block;margin-top:2px">Declined — outside allowed merchant type · logged for finance</small></div><b style="font-size:13.5px;font-variant-numeric:tabular-nums;color:#C62828">£240.00</b></div>
+          </div>
+
+          <div style="display:flex;gap:9px;margin-top:16px">
+            <button style="flex:1;height:52px;border-radius:16px;border:1.5px solid #E5E1EC;background:#fff;color:#48495A;font-size:12.5px;font-weight:600;font-family:inherit;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#48495A" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 7l-5 5-5-5M17 17l-5-5-5 5"/></svg>Freeze</button>
+            <button style="flex:1;height:52px;border-radius:16px;border:1.5px solid #E5E1EC;background:#fff;color:#48495A;font-size:12.5px;font-weight:600;font-family:inherit;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#48495A" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>Top-up</button>
+            <button style="flex:1;height:52px;border-radius:16px;border:1.5px solid #F3D9D9;background:#fff;color:#C62828;font-size:12.5px;font-weight:600;font-family:inherit;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#C62828" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>Deactivate</button>
+          </div>
+        </div>
+      </div></div>
+<div data-proto-index="7" style="position:absolute;top:0;left:0;display:none"><div data-screen-label="08" style="width:392px;height:868px;background:#F5F5F8;border-radius:48px;box-shadow:0 40px 90px -24px rgba(26,26,36,.42),0 0 0 11px #0d0d12,0 0 0 12px #33333d;overflow:hidden;position:relative;display:flex;flex-direction:column">
+        <div style="height:56px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 34px 0 38px;font-size:15px;font-weight:600">
+          <span style="letter-spacing:-.02em">9:41</span>
+          <div style="display:flex;gap:8px;align-items:center">
+            <svg width="18" height="12" viewBox="0 0 18 12" fill="#17171F"><rect x="0" y="7" width="3" height="5" rx="1"/><rect x="5" y="4.5" width="3" height="7.5" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1" opacity=".3"/></svg>
+            <svg width="17" height="12" viewBox="0 0 24 24" fill="none" stroke="#17171F" stroke-width="2" stroke-linecap="round"><path d="M5 12.55a11 11 0 0 1 14 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+            <svg width="26" height="13" viewBox="0 0 26 13" fill="none"><rect x="1" y="1" width="21" height="11" rx="3" stroke="#17171F" stroke-opacity=".4"/><rect x="3" y="3" width="16" height="7" rx="1.5" fill="#17171F"/><rect x="23.5" y="4.5" width="1.5" height="4" rx=".75" fill="#17171F" fill-opacity=".4"/></svg>
+          </div>
+        </div>
+        <div style="flex:1;overflow-y:auto;padding:10px 24px 30px;display:flex;flex-direction:column">
+          <div style="font-size:30px;font-weight:800;letter-spacing:-.03em;line-height:1.05;margin-bottom:16px">Add expense</div>
+
+          <!-- capture primary -->
+          <button style="height:72px;border-radius:20px;border:none;background:#4F008C;color:#fff;font-family:inherit;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:12px;padding:0 22px;box-shadow:0 16px 34px -16px rgba(79,0,140,.7);margin-bottom:12px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg><span style="font-size:18px;font-weight:700;letter-spacing:-.01em">Capture receipt</span></button>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:22px">
+            <button style="height:64px;border-radius:16px;border:1.5px solid #E9E7EE;background:#fff;color:#48495A;font-size:12px;font-weight:600;font-family:inherit;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6A6B79" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>Upload</button>
+            <button style="height:64px;border-radius:16px;border:1.5px solid #E9E7EE;background:#fff;color:#48495A;font-size:12px;font-weight:600;font-family:inherit;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6A6B79" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>Email in</button>
+            <button style="height:64px;border-radius:16px;border:1.5px solid #E9E7EE;background:#fff;color:#48495A;font-size:12px;font-weight:600;font-family:inherit;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6A6B79" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>PDF</button>
+          </div>
+
+          <!-- needs you -->
+          <div style="background:#fff;border-radius:20px;box-shadow:0 0 0 1.5px rgba(183,110,0,.25),0 12px 30px -18px rgba(20,20,30,.14);padding:16px;margin-bottom:18px">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><span style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#B76E00">Needs you — 2 fields, not the whole form</span></div>
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px"><div style="width:40px;height:40px;border-radius:13px;background:#FBF2E3;color:#B76E00;display:flex;align-items:center;justify-content:center;flex:none"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M14 8H8"/><path d="M16 12H8"/><path d="M13 16H8"/></svg></div><div style="flex:1"><b style="font-size:14px;font-weight:600;display:block">The Ivy Canary Wharf</b><small style="font-size:11.5px;color:#8A8B98">OCR read everything else — just confirm two</small></div></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+              <div style="background:#F7F7FA;border-radius:12px;padding:9px 10px"><div style="font-size:9.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#9A9BA8">Amount</div><div style="font-size:12.5px;font-weight:600;margin-top:2px">£58.40</div></div>
+              <div style="background:#F7F7FA;border-radius:12px;padding:9px 10px"><div style="font-size:9.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#9A9BA8">Date</div><div style="font-size:12.5px;font-weight:600;margin-top:2px">15 Jul</div></div>
+              <div style="background:#F7F7FA;border-radius:12px;padding:9px 10px"><div style="font-size:9.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#9A9BA8">Currency</div><div style="font-size:12.5px;font-weight:600;margin-top:2px">GBP</div></div>
+              <div style="background:#fff;border:1.5px solid #E9B84D;border-radius:12px;padding:9px 10px;grid-column:span 1;box-shadow:0 0 0 3px rgba(233,184,77,.12)"><div style="font-size:9.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#B76E00">Invoice no.</div><div style="font-size:12.5px;font-weight:600;margin-top:2px;color:#B76E00">Tap to fix</div></div>
+              <div style="background:#fff;border:1.5px solid #E9B84D;border-radius:12px;padding:9px 10px;grid-column:span 2;box-shadow:0 0 0 3px rgba(233,184,77,.12)"><div style="font-size:9.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#B76E00">VAT %</div><div style="font-size:12.5px;font-weight:600;margin-top:2px;color:#B76E00">Tap to fix</div></div>
+            </div>
+          </div>
+
+          <!-- pipeline -->
+          <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#9A9BA8;margin-bottom:11px">Pipeline</div>
+          <div style="display:flex;flex-direction:column;gap:9px">
+            <div style="display:flex;align-items:center;gap:12px;background:#fff;border-radius:16px;padding:13px 15px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 10px 24px -18px rgba(20,20,30,.12)"><div style="width:34px;height:34px;border-radius:11px;background:#E6F7F1;color:#00795A;display:flex;align-items:center;justify-content:center;flex:none"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div><div style="flex:1;min-width:0"><b style="font-size:13.5px;font-weight:600;display:block">Marriott Canary Wharf</b><small style="font-size:11px;color:#8A8B98">Valid tax invoice · logged</small></div><b style="font-size:13px;font-variant-numeric:tabular-nums">£672.00</b></div>
+            <div style="display:flex;align-items:center;gap:12px;background:#fff;border-radius:16px;padding:13px 15px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 10px 24px -18px rgba(20,20,30,.12)"><div style="width:34px;height:34px;border-radius:11px;background:#F1E7FA;color:#4F008C;display:flex;align-items:center;justify-content:center;flex:none"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div style="flex:1;min-width:0"><b style="font-size:13.5px;font-weight:600;display:block">Costa Coffee</b><small style="font-size:11px;color:#8A8B98">Reading your receipt — you can leave</small></div><span style="font-size:11px;font-weight:600;color:#4F008C">OCR…</span></div>
+            <div style="display:flex;align-items:center;gap:12px;background:#fff;border-radius:16px;padding:13px 15px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 10px 24px -18px rgba(20,20,30,.12)"><div style="width:34px;height:34px;border-radius:11px;background:#F5F5F8;color:#8A8B98;display:flex;align-items:center;justify-content:center;flex:none"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg></div><div style="flex:1;min-width:0"><b style="font-size:13.5px;font-weight:600;display:block">Boots pharmacy</b><small style="font-size:11px;color:#8A8B98">Pending sync — will OCR when back online</small></div><span style="font-size:11px;font-weight:600;color:#8A8B98">Queued</span></div>
+            <div style="display:flex;align-items:center;gap:12px;background:#fff;border-radius:16px;padding:13px 15px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 10px 24px -18px rgba(20,20,30,.12)"><div style="width:34px;height:34px;border-radius:11px;background:#FBF2E3;color:#B76E00;display:flex;align-items:center;justify-content:center;flex:none"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></div><div style="flex:1;min-width:0"><b style="font-size:13.5px;font-weight:600;display:block">Black cab · paper receipt</b><small style="font-size:11px;color:#8A8B98">Not a valid tax invoice — kept as expense</small></div><span style="font-size:11px;font-weight:600;color:#B76E00">Invalid</span></div>
+            <div style="display:flex;align-items:center;gap:12px;background:#fff;border-radius:16px;padding:13px 15px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 10px 24px -18px rgba(20,20,30,.12)"><div style="width:34px;height:34px;border-radius:11px;background:#FBEBEB;color:#C62828;display:flex;align-items:center;justify-content:center;flex:none"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></div><div style="flex:1;min-width:0"><b style="font-size:13.5px;font-weight:600;display:block">Blurry photo</b><small style="font-size:11px;color:#8A8B98">Couldn't read this one — retake the photo</small></div><span style="display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#4F008C;background:#F1E7FA;border-radius:999px;padding:4px 10px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>Retake</span></div>
+          </div>
+        </div>
+      </div></div>
+<div data-proto-index="8" style="position:absolute;top:0;left:0;display:none"><div data-screen-label="09" style="width:392px;height:868px;background:#F5F5F8;border-radius:48px;box-shadow:0 40px 90px -24px rgba(26,26,36,.42),0 0 0 11px #0d0d12,0 0 0 12px #33333d;overflow:hidden;position:relative;display:flex;flex-direction:column">
+        <div style="height:56px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 34px 0 38px;font-size:15px;font-weight:600">
+          <span style="letter-spacing:-.02em">9:41</span>
+          <div style="display:flex;gap:8px;align-items:center">
+            <svg width="18" height="12" viewBox="0 0 18 12" fill="#17171F"><rect x="0" y="7" width="3" height="5" rx="1"/><rect x="5" y="4.5" width="3" height="7.5" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1" opacity=".3"/></svg>
+            <svg width="17" height="12" viewBox="0 0 24 24" fill="none" stroke="#17171F" stroke-width="2" stroke-linecap="round"><path d="M5 12.55a11 11 0 0 1 14 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+            <svg width="26" height="13" viewBox="0 0 26 13" fill="none"><rect x="1" y="1" width="21" height="11" rx="3" stroke="#17171F" stroke-opacity=".4"/><rect x="3" y="3" width="16" height="7" rx="1.5" fill="#17171F"/><rect x="23.5" y="4.5" width="1.5" height="4" rx=".75" fill="#17171F" fill-opacity=".4"/></svg>
+          </div>
+        </div>
+        <div style="flex:1;overflow-y:auto;padding:10px 24px 30px;display:flex;flex-direction:column">
+          <div style="font-size:30px;font-weight:800;letter-spacing:-.03em;line-height:1.05;margin-bottom:16px">VAT recovery</div>
+
+          <!-- recovered hero -->
+          <div style="background:#fff;border-radius:24px;padding:20px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 14px 34px -20px rgba(20,20,30,.16);margin-bottom:16px">
+            <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#9A9BA8;margin-bottom:6px">Cash recovered</div>
+            <div style="font-size:42px;font-weight:800;letter-spacing:-.03em;color:#00795A;line-height:1;font-variant-numeric:tabular-nums">BHD 128</div>
+            <div style="height:12px;border-radius:999px;overflow:hidden;display:flex;margin:16px 0 10px"><i style="width:43%;background:#00A876"></i><i style="width:32%;background:#4F008C"></i><i style="width:11%;background:#B79AD6"></i><i style="width:14%;background:#E0A439"></i></div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px 14px;font-size:11.5px;color:#8A8B98">
+              <span style="display:flex;align-items:center;gap:5px"><span style="width:9px;height:9px;border-radius:3px;background:#00A876"></span>Recovered · BHD 128</span>
+              <span style="display:flex;align-items:center;gap:5px"><span style="width:9px;height:9px;border-radius:3px;background:#4F008C"></span>Claimed · BHD 96</span>
+              <span style="display:flex;align-items:center;gap:5px"><span style="width:9px;height:9px;border-radius:3px;background:#B79AD6"></span>Pending · BHD 34</span>
+              <span style="display:flex;align-items:center;gap:5px"><span style="width:9px;height:9px;border-radius:3px;background:#E0A439"></span>Estimated · BHD 41</span>
+            </div>
+          </div>
+
+          <!-- KPIs -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px">
+            <div style="background:#fff;border-radius:16px;padding:15px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 10px 24px -18px rgba(20,20,30,.12)"><div style="font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#9A9BA8;margin-bottom:6px">Total spend · trip</div><div style="font-size:22px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.02em">BHD 1,355</div></div>
+            <div style="background:#fff;border-radius:16px;padding:15px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 10px 24px -18px rgba(20,20,30,.12)"><div style="font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#9A9BA8;margin-bottom:6px">Recoverable · est.</div><div style="font-size:22px;font-weight:800;color:#00795A;font-variant-numeric:tabular-nums;letter-spacing:-.02em">BHD 41</div></div>
+            <div style="background:#fff;border-radius:16px;padding:15px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 10px 24px -18px rgba(20,20,30,.12)"><div style="font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#9A9BA8;margin-bottom:6px">Pending · in review</div><div style="font-size:22px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.02em">BHD 34</div></div>
+            <div style="background:#fff;border-radius:16px;padding:15px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 10px 24px -18px rgba(20,20,30,.12)"><div style="font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#9A9BA8;margin-bottom:6px">Rejected · with reason</div><div style="font-size:22px;font-weight:800;color:#B76E00;font-variant-numeric:tabular-nums;letter-spacing:-.02em">BHD 12</div></div>
+          </div>
+
+          <!-- jurisdiction strip -->
+          <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#9A9BA8;margin-bottom:11px">Where VAT comes back</div>
+          <div style="display:flex;gap:10px;margin-bottom:18px">
+            <div style="flex:1;background:#fff;border-radius:18px;padding:15px 13px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 10px 24px -18px rgba(20,20,30,.12)"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px"><span style="width:30px;height:30px;border-radius:9px;background:#E6F7F1;color:#00795A;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;letter-spacing:.02em">BH</span><span style="font-size:18px;font-weight:800;color:#00795A;letter-spacing:-.02em">10%</span></div><div style="font-size:13px;font-weight:700">Bahrain</div><div style="font-size:10.5px;color:#9A9BA8;margin-top:1px">NBR · BHD 42</div></div>
+            <div style="flex:1;background:#fff;border-radius:18px;padding:15px 13px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 10px 24px -18px rgba(20,20,30,.12)"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px"><span style="width:30px;height:30px;border-radius:9px;background:#E6F7F1;color:#00795A;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;letter-spacing:.02em">AE</span><span style="font-size:18px;font-weight:800;color:#00795A;letter-spacing:-.02em">5%</span></div><div style="font-size:13px;font-weight:700">UAE</div><div style="font-size:10.5px;color:#9A9BA8;margin-top:1px">FTA · AED 90</div></div>
+            <div style="flex:1;background:#F7F7FA;border-radius:18px;padding:15px 13px;box-shadow:inset 0 0 0 1px #ECECF1"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px"><span style="width:30px;height:30px;border-radius:9px;background:#ECECF1;color:#9A9BA8;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;letter-spacing:.02em">UK</span><span style="font-size:18px;font-weight:800;color:#B4B5C0;letter-spacing:-.02em">—</span></div><div style="font-size:13px;font-weight:700;color:#8A8B98">United K.</div><div style="font-size:10.5px;color:#B4B5C0;margin-top:1px">HMRC · n/a</div></div>
+          </div>
+
+          <!-- invoice rows -->
+          <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#9A9BA8;margin-bottom:11px">Claims · 4 invoices</div>
+          <div style="display:flex;flex-direction:column;gap:9px">
+            <div style="display:flex;align-items:center;gap:12px;background:#fff;border-radius:18px;padding:13px 15px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 10px 24px -18px rgba(20,20,30,.12)"><div style="width:36px;height:36px;border-radius:12px;background:#E6F7F1;color:#00795A;display:flex;align-items:center;justify-content:center;flex:none"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div><div style="flex:1;min-width:0"><b style="font-size:13.5px;font-weight:600;display:block">Downtown Rotana, Manama</b><small style="font-size:11px;color:#8A8B98">Bahrain · NBR 10% · paid 28 Jun</small></div><div style="text-align:right;flex:none"><b style="font-size:13.5px;color:#00795A;font-variant-numeric:tabular-nums;display:block">BHD 42</b><span style="font-size:10px;font-weight:700;color:#00795A;text-transform:uppercase;letter-spacing:.04em">Recovered</span></div></div>
+            <div style="display:flex;align-items:center;gap:12px;background:#fff;border-radius:18px;padding:13px 15px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 10px 24px -18px rgba(20,20,30,.12)"><div style="width:36px;height:36px;border-radius:12px;background:#F1E7FA;color:#4F008C;display:flex;align-items:center;justify-content:center;flex:none"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div style="flex:1;min-width:0"><b style="font-size:13.5px;font-weight:600;display:block">Address Dubai Mall</b><small style="font-size:11px;color:#8A8B98">UAE · FTA 5% · est. 2 weeks</small></div><div style="text-align:right;flex:none"><b style="font-size:13.5px;color:#4F008C;font-variant-numeric:tabular-nums;display:block">AED 90</b><span style="font-size:10px;font-weight:700;color:#4F008C;text-transform:uppercase;letter-spacing:.04em">Submitted</span></div></div>
+            <div style="display:flex;align-items:center;gap:12px;background:#fff;border-radius:18px;padding:13px 15px;box-shadow:0 0 0 1.5px rgba(198,40,40,.18),0 10px 24px -18px rgba(20,20,30,.12)"><div style="width:36px;height:36px;border-radius:12px;background:#FBEBEB;color:#C62828;display:flex;align-items:center;justify-content:center;flex:none"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></div><div style="flex:1;min-width:0"><b style="font-size:13.5px;font-weight:600;display:block">City Cab Dubai</b><small style="font-size:11px;color:#C62828">Missing merchant tax ID · fix &amp; resubmit</small></div><div style="text-align:right;flex:none"><b style="font-size:13.5px;color:#C62828;font-variant-numeric:tabular-nums;display:block">AED 3</b><span style="font-size:10px;font-weight:700;color:#C62828;text-transform:uppercase;letter-spacing:.04em">Rejected</span></div></div>
+            <div style="display:flex;align-items:center;gap:12px;background:#fff;border-radius:18px;padding:13px 15px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 10px 24px -18px rgba(20,20,30,.12)"><div style="width:36px;height:36px;border-radius:12px;background:#F5F5F8;color:#9A9BA8;display:flex;align-items:center;justify-content:center;flex:none"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg></div><div style="flex:1;min-width:0"><b style="font-size:13.5px;font-weight:600;display:block;color:#8A8B98">Marriott Canary Wharf</b><small style="font-size:11px;color:#B4B5C0">UK outside V1 — kept as project expense</small></div><div style="text-align:right;flex:none"><b style="font-size:13.5px;color:#B4B5C0;font-variant-numeric:tabular-nums;display:block">—</b><span style="font-size:10px;font-weight:700;color:#B4B5C0;text-transform:uppercase;letter-spacing:.04em">Expense</span></div></div>
+          </div>
+        </div>
+      </div></div>
+<div data-proto-index="9" style="position:absolute;top:0;left:0;display:none"><div data-screen-label="10" style="width:392px;height:868px;background:#F5F5F8;border-radius:48px;box-shadow:0 40px 90px -24px rgba(26,26,36,.42),0 0 0 11px #0d0d12,0 0 0 12px #33333d;overflow:hidden;position:relative;display:flex;flex-direction:column">
+        <div style="height:56px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 34px 0 38px;font-size:15px;font-weight:600">
+          <span style="letter-spacing:-.02em">9:41</span>
+          <div style="display:flex;gap:8px;align-items:center">
+            <svg width="18" height="12" viewBox="0 0 18 12" fill="#17171F"><rect x="0" y="7" width="3" height="5" rx="1"/><rect x="5" y="4.5" width="3" height="7.5" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1" opacity=".3"/></svg>
+            <svg width="17" height="12" viewBox="0 0 24 24" fill="none" stroke="#17171F" stroke-width="2" stroke-linecap="round"><path d="M5 12.55a11 11 0 0 1 14 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+            <svg width="26" height="13" viewBox="0 0 26 13" fill="none"><rect x="1" y="1" width="21" height="11" rx="3" stroke="#17171F" stroke-opacity=".4"/><rect x="3" y="3" width="16" height="7" rx="1.5" fill="#17171F"/><rect x="23.5" y="4.5" width="1.5" height="4" rx=".75" fill="#17171F" fill-opacity=".4"/></svg>
+          </div>
+        </div>
+        <div style="flex:1;overflow-y:auto;padding:10px 24px 30px;display:flex;flex-direction:column">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
+            <div style="font-size:30px;font-weight:800;letter-spacing:-.03em;line-height:1.05">Approvals</div>
+            <span style="font-size:12px;font-weight:700;color:#fff;background:#4F008C;border-radius:999px;padding:6px 13px">2 waiting</span>
+          </div>
+
+          <!-- queue item 1 -->
+          <div style="background:#fff;border-radius:22px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 14px 34px -20px rgba(20,20,30,.16);padding:18px;margin-bottom:12px">
+            <div style="display:flex;align-items:center;gap:11px;margin-bottom:12px"><div style="width:38px;height:38px;border-radius:999px;background:#F1E7FA;color:#4F008C;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;flex:none">SA</div><div style="flex:1"><b style="font-size:14px;font-weight:600;display:block">Sara Ahmed</b><small style="font-size:11.5px;color:#8A8B98">London · 14–18 Jul</small></div><span style="font-size:11px;font-weight:600;color:#8A8B98">2h ago</span></div>
+            <div style="font-size:14px;font-weight:600;margin-bottom:4px">Hotel upgrade — Marriott exec floor</div>
+            <div style="font-size:12px;color:#8A8B98;margin-bottom:12px">+BHD 38/night · reason: client dinner hosted at hotel</div>
+            <div style="display:flex;gap:8px">
+              <button style="flex:1;height:42px;border-radius:12px;border:none;background:#4F008C;color:#fff;font-size:13.5px;font-weight:600;font-family:inherit;cursor:pointer">Approve</button>
+              <button style="height:42px;padding:0 16px;border-radius:12px;border:1.5px solid #E9E7EE;background:#fff;color:#48495A;font-size:13.5px;font-weight:600;font-family:inherit;cursor:pointer">Reject</button>
+              <button style="height:42px;padding:0 16px;border-radius:12px;border:1.5px solid #E9E7EE;background:#fff;color:#48495A;font-size:13.5px;font-weight:600;font-family:inherit;cursor:pointer">Adjust</button>
+            </div>
+          </div>
+
+          <!-- queue item 2 SLA -->
+          <div style="background:#fff;border-radius:22px;box-shadow:0 0 0 1.5px rgba(183,110,0,.3),0 14px 34px -20px rgba(20,20,30,.16);padding:18px;margin-bottom:18px">
+            <div style="display:flex;align-items:center;gap:11px;margin-bottom:12px"><div style="width:38px;height:38px;border-radius:999px;background:#FBF2E3;color:#B76E00;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;flex:none">OK</div><div style="flex:1"><b style="font-size:14px;font-weight:600;display:block">Omar Khalid</b><small style="font-size:11.5px;color:#8A8B98">Doha · 21–22 Jul</small></div><span style="font-size:11px;font-weight:700;color:#B76E00;background:#FBF2E3;border-radius:999px;padding:4px 9px">26h · escalates 2h</span></div>
+            <div style="font-size:14px;font-weight:600;margin-bottom:4px">Top-up request — BHD 250</div>
+            <div style="font-size:12px;color:#8A8B98;margin-bottom:12px">Budget 100% used · client workshop ran over</div>
+            <div style="display:flex;gap:8px">
+              <button style="flex:1;height:42px;border-radius:12px;border:none;background:#4F008C;color:#fff;font-size:13.5px;font-weight:600;font-family:inherit;cursor:pointer">Approve</button>
+              <button style="height:42px;padding:0 16px;border-radius:12px;border:1.5px solid #E9E7EE;background:#fff;color:#48495A;font-size:13.5px;font-weight:600;font-family:inherit;cursor:pointer">Reject</button>
+              <button style="height:42px;padding:0 16px;border-radius:12px;border:1.5px solid #E9E7EE;background:#fff;color:#48495A;font-size:13.5px;font-weight:600;font-family:inherit;cursor:pointer">Adjust</button>
+            </div>
+          </div>
+
+          <!-- programme at a glance -->
+          <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#9A9BA8;margin-bottom:11px">Programme at a glance</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px">
+            <div style="background:#fff;border-radius:16px;padding:14px 15px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 10px 24px -18px rgba(20,20,30,.12);display:flex;align-items:center;gap:12px"><div style="font-size:22px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1;min-width:34px">3</div><div><div style="font-size:12.5px;font-weight:600;line-height:1.15">Travelling now</div><div style="font-size:11px;color:#9A9BA8;margin-top:1px">team members</div></div></div>
+            <div style="background:#fff;border-radius:16px;padding:14px 15px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 10px 24px -18px rgba(20,20,30,.12);display:flex;align-items:center;gap:12px"><div style="font-size:22px;font-weight:800;letter-spacing:-.02em;line-height:1;min-width:34px">64%</div><div><div style="font-size:12.5px;font-weight:600;line-height:1.15">Budget used</div><div style="font-size:11px;color:#9A9BA8;margin-top:1px">across trips</div></div></div>
+            <div style="background:#fff;border-radius:16px;padding:14px 15px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 10px 24px -18px rgba(20,20,30,.12);display:flex;align-items:center;gap:12px"><div style="font-size:22px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1;min-width:34px">5</div><div><div style="font-size:12.5px;font-weight:600;line-height:1.15">Active cards</div><div style="font-size:11px;color:#9A9BA8;margin-top:1px">1 frozen</div></div></div>
+            <div style="background:#fff;border-radius:16px;padding:14px 15px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 10px 24px -18px rgba(20,20,30,.12);display:flex;align-items:center;gap:12px"><div style="font-size:22px;font-weight:800;letter-spacing:-.02em;color:#B76E00;font-variant-numeric:tabular-nums;line-height:1;min-width:34px">2</div><div><div style="font-size:12.5px;font-weight:600;line-height:1.15">Pending you</div><div style="font-size:11px;color:#9A9BA8;margin-top:1px">1 escalating</div></div></div>
+            <div style="grid-column:1/-1;background:#fff;border-radius:16px;padding:14px 15px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 10px 24px -18px rgba(20,20,30,.12);display:flex;align-items:center;gap:12px"><div style="width:34px;height:34px;border-radius:11px;background:#E6F7F1;color:#00795A;display:flex;align-items:center;justify-content:center;flex:none"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg></div><div style="flex:1"><div style="font-size:12.5px;font-weight:600;line-height:1.15">VAT recoverable across programme</div><div style="font-size:11px;color:#9A9BA8;margin-top:1px">4 trips · 2 jurisdictions</div></div><div style="font-size:20px;font-weight:800;color:#00795A;letter-spacing:-.02em;font-variant-numeric:tabular-nums">BHD 128</div></div>
+          </div>
+          <div style="display:flex;gap:9px;margin-top:auto">
+            <button style="flex:1;height:48px;border-radius:14px;border:1.5px solid #E5E1EC;background:#fff;color:#00795A;font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00795A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>Increase allowance</button>
+            <button style="flex:1;height:48px;border-radius:14px;border:1.5px solid #E5E1EC;background:#fff;color:#4F008C;font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4F008C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>Issue VCC</button>
+          </div>
+        </div>
+      </div></div>
+<div data-proto-index="10" style="position:absolute;top:0;left:0;display:none"><div data-screen-label="11" style="width:392px;height:868px;background:#F5F5F8;border-radius:48px;box-shadow:0 40px 90px -24px rgba(26,26,36,.42),0 0 0 11px #0d0d12,0 0 0 12px #33333d;overflow:hidden;position:relative;display:flex;flex-direction:column">
+        <div style="height:56px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 34px 0 38px;font-size:15px;font-weight:600">
+          <span style="letter-spacing:-.02em">9:41</span>
+          <div style="display:flex;gap:8px;align-items:center">
+            <svg width="18" height="12" viewBox="0 0 18 12" fill="#17171F"><rect x="0" y="7" width="3" height="5" rx="1"/><rect x="5" y="4.5" width="3" height="7.5" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1" opacity=".3"/></svg>
+            <svg width="17" height="12" viewBox="0 0 24 24" fill="none" stroke="#17171F" stroke-width="2" stroke-linecap="round"><path d="M5 12.55a11 11 0 0 1 14 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+            <svg width="26" height="13" viewBox="0 0 26 13" fill="none"><rect x="1" y="1" width="21" height="11" rx="3" stroke="#17171F" stroke-opacity=".4"/><rect x="3" y="3" width="16" height="7" rx="1.5" fill="#17171F"/><rect x="23.5" y="4.5" width="1.5" height="4" rx=".75" fill="#17171F" fill-opacity=".4"/></svg>
+          </div>
+        </div>
+        <div style="flex:1;overflow-y:auto;padding:10px 24px 30px;display:flex;flex-direction:column">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#9A9BA8;margin-bottom:3px">Project</div>
+          <div style="font-size:28px;font-weight:800;letter-spacing:-.03em;line-height:1.05;margin-bottom:3px">Digital Transformation</div>
+          <div style="font-size:13px;color:#8A8B98;margin-bottom:20px">Gulf Retail Group · Client Solutions</div>
+
+          <!-- budget bar -->
+          <div style="background:#4F008C;color:#fff;border-radius:24px;padding:20px;box-shadow:0 20px 40px -20px rgba(79,0,140,.6);margin-bottom:16px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px"><div><div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6)">Spent to date</div><div style="font-size:34px;font-weight:800;letter-spacing:-.03em;line-height:1;margin-top:4px">BHD 1,355</div></div><div style="text-align:right"><div style="font-size:11px;color:rgba(255,255,255,.6)">of budget</div><div style="font-size:16px;font-weight:700">BHD 4,000</div></div></div>
+            <div style="height:8px;background:rgba(255,255,255,.22);border-radius:999px;overflow:hidden"><i style="display:block;height:100%;width:34%;background:#00C48C;border-radius:999px"></i></div>
+          </div>
+
+          <!-- KPIs -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px">
+            <div style="background:#fff;border-radius:16px;padding:15px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 10px 24px -18px rgba(20,20,30,.12)"><div style="font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#9A9BA8;margin-bottom:6px">Invoices collected</div><div style="font-size:22px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.02em">11</div></div>
+            <div style="background:#fff;border-radius:16px;padding:15px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 10px 24px -18px rgba(20,20,30,.12)"><div style="font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#9A9BA8;margin-bottom:6px">VAT recoverable</div><div style="font-size:22px;font-weight:800;color:#00795A;font-variant-numeric:tabular-nums;letter-spacing:-.02em">BHD 41</div></div>
+            <div style="background:#fff;border-radius:16px;padding:15px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 10px 24px -18px rgba(20,20,30,.12)"><div style="font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#9A9BA8;margin-bottom:6px">Cards issued</div><div style="font-size:22px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.02em">3</div></div>
+            <div style="background:#fff;border-radius:16px;padding:15px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 10px 24px -18px rgba(20,20,30,.12)"><div style="font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#9A9BA8;margin-bottom:6px">Approvals</div><div style="font-size:22px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.02em;line-height:1">5</div><div style="font-size:11px;color:#B76E00;font-weight:600;margin-top:4px">1 pending</div></div>
+          </div>
+
+          <!-- trips rollup -->
+          <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#9A9BA8;margin-bottom:11px">Trips on this project</div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;align-items:center;gap:13px;background:#fff;border-radius:18px;padding:15px 16px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 10px 26px -18px rgba(20,20,30,.13)"><div style="width:40px;height:40px;border-radius:13px;background:#F1E7FA;color:#4F008C;display:flex;align-items:center;justify-content:center;flex:none"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div><div style="flex:1;min-width:0"><b style="font-size:14px;font-weight:600;display:block">London · Sara Ahmed</b><small style="font-size:11.5px;color:#8A8B98">14–18 Jul · 1 exception approved</small></div><div style="text-align:right;flex:none"><b style="font-size:14px;font-variant-numeric:tabular-nums;display:block">BHD 330</b><span style="font-size:10px;font-weight:700;color:#4F008C;text-transform:uppercase;letter-spacing:.04em">Active</span></div></div>
+            <div style="display:flex;align-items:center;gap:13px;background:#fff;border-radius:18px;padding:15px 16px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 10px 26px -18px rgba(20,20,30,.13)"><div style="width:40px;height:40px;border-radius:13px;background:#F5F5F8;color:#6A6B79;display:flex;align-items:center;justify-content:center;flex:none"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div><div style="flex:1;min-width:0"><b style="font-size:14px;font-weight:600;display:block">Manama · Omar Khalid</b><small style="font-size:11.5px;color:#8A8B98">2–4 Jun · reconciled · NBR 10%</small></div><div style="text-align:right;flex:none"><b style="font-size:14px;font-variant-numeric:tabular-nums;display:block">BHD 640</b><span style="font-size:10px;font-weight:700;color:#00795A;text-transform:uppercase;letter-spacing:.04em">Reconciled</span></div></div>
+            <div style="display:flex;align-items:center;gap:13px;background:#fff;border-radius:18px;padding:15px 16px;box-shadow:0 1px 2px rgba(20,20,30,.04),0 10px 26px -18px rgba(20,20,30,.13)"><div style="width:40px;height:40px;border-radius:13px;background:#F5F5F8;color:#6A6B79;display:flex;align-items:center;justify-content:center;flex:none"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div><div style="flex:1;min-width:0"><b style="font-size:14px;font-weight:600;display:block">Dubai · Priya Nair</b><small style="font-size:11.5px;color:#8A8B98">12–13 May · reconciled · FTA 5%</small></div><div style="text-align:right;flex:none"><b style="font-size:14px;font-variant-numeric:tabular-nums;display:block">BHD 385</b><span style="font-size:10px;font-weight:700;color:#00795A;text-transform:uppercase;letter-spacing:.04em">Reconciled</span></div></div>
+          </div>
+        </div>
+      </div></div>
+      </div>
+    </div>
+  </main>
+</div>
+<script>
+function initProto(root){
+  if(!root) return;
+  var labels=['01 · Corporate Landing','02 · Trip Workspace','03 · Create Trip','04 · Trip Planner','05 · Booking','06 · Allowance','07 · Virtual Card','08 · Expense Capture','09 · VAT & Claims','10 · Manager · Control Tower','11 · Project Dashboard'];
+  var N=labels.length, idx=0, hist=[];
+  var screens=[].slice.call(root.querySelectorAll('[data-proto-index]'));
+  var fitEl=root.querySelector('[data-phone-fit]'), innerEl=root.querySelector('[data-phone-inner]'), mainEl=root.querySelector('[data-stage-main]');
+  var W=392,H=868;
+  function fit(){ var aH=mainEl.clientHeight-24, aW=mainEl.clientWidth-24; var s=Math.min(aH/H, aW/W, 1); if(!isFinite(s)||s<=0) s=1; innerEl.style.transform='translateX(-50%) scale('+s+')'; fitEl.style.width=(W*s)+'px'; fitEl.style.height=(H*s)+'px'; }
+  function find(sc,txt){ txt=txt.toLowerCase(); var els=sc.querySelectorAll('span,b,div,button'); for(var k=0;k<els.length;k++){ if(els[k].textContent.trim().toLowerCase()===txt) return els[k]; } return null; }
+  function setG(el,to){ if(el) el.setAttribute('data-goto',String(to)); }
+  function tile(sc,label,to){ setG(find(sc,label),to); }
+  function wire(){
+    var s=screens;
+    [].forEach.call(root.querySelectorAll('svg path'),function(p){ var d=p.getAttribute('d')||''; if(d.indexOf('m15 18-6-6 6-6')>=0 || d.indexOf('M18 6 6 18')>=0){ var n=p.closest('div'); if(n) n.setAttribute('data-back','1'); } });
+    var sc0=s[0];
+    var at0=find(sc0,'Active trip'); var hero=at0&&at0.parentElement?at0.parentElement.parentElement:null; setG(hero,1);
+    tile(sc0,'Upcoming Trips',3); tile(sc0,'My Cards',6); tile(sc0,'Expenses',7); tile(sc0,'Invoices',10); tile(sc0,'Approvals',9); tile(sc0,'VAT Claims',8);
+    var ua=find(sc0,'Upcoming approval'); if(ua&&ua.parentElement&&ua.parentElement.parentElement) ua.parentElement.parentElement.setAttribute('data-goto','9');
+    var pe=find(sc0,'Pending expense claims'); if(pe&&pe.parentElement&&pe.parentElement.parentElement) pe.parentElement.parentElement.setAttribute('data-goto','7');
+    var sc1=s[1]; tile(sc1,'Plan Trip',2); tile(sc1,'Book Travel',4); tile(sc1,'Generate VCC',6); tile(sc1,'Upload Invoice',10); tile(sc1,'Allowance',5);
+    setG(find(sc1,'View full timeline'),3);
+    setG(find(s[2],'Create trip'),3);
+    setG(find(s[3],'Add to timeline'),4);
+    [].forEach.call(s[4].querySelectorAll('button'),function(b){ if(b.textContent.trim().toLowerCase()==='book') b.setAttribute('data-goto','3'); });
+    setG(find(s[5],'Request an increase'),1);
+  }
+  function jumpEl(){ return root.querySelector('[data-jump]'); }
+  function toggleGrid(){ var j=jumpEl(); j.style.display = j.style.display==='flex' ? 'none' : 'flex'; }
+  function closeGrid(){ var j=jumpEl(); if(j) j.style.display='none'; }
+  function updateDock(){ var lbl=root.querySelector('[data-dock-label]'); if(lbl) lbl.textContent=labels[idx];
+    [].forEach.call(root.querySelectorAll('[data-chip]'),function(c){ var on=parseInt(c.getAttribute('data-chip'),10)===idx; c.style.background=on?'#4F008C':'transparent'; c.style.color=on?'#fff':'rgba(255,255,255,.72)'; }); }
+  function go(i,push){ if(i==null||isNaN(i)) return; if(push!==false && i!==idx) hist.push(idx); idx=i;
+    for(var k=0;k<screens.length;k++){ var el=screens[k]; el.style.display=k===i?'block':'none'; var scr=el.querySelector('[style*="overflow-y:auto"]'); if(scr) scr.scrollTop=0; }
+    updateDock(); }
+  function back(){ var t=hist.length?hist.pop():0; go(t,false); }
+  wire();
+  root.querySelector('[data-nav=prev]').onclick=function(){ go((idx+N-1)%N,false); };
+  root.querySelector('[data-nav=next]').onclick=function(){ go((idx+1)%N,false); };
+  root.querySelector('[data-nav=grid]').onclick=function(e){ e.stopPropagation(); toggleGrid(); };
+  [].forEach.call(root.querySelectorAll('[data-goto]'),function(el){ el.style.cursor='pointer'; el.addEventListener('click',function(ev){ ev.stopPropagation(); go(parseInt(el.getAttribute('data-goto'),10)); closeGrid(); }); });
+  [].forEach.call(root.querySelectorAll('[data-back]'),function(el){ el.style.cursor='pointer'; el.addEventListener('click',function(ev){ ev.stopPropagation(); back(); }); });
+  document.addEventListener('keydown',function(e){ if(e.key==='ArrowRight') go((idx+1)%N,false); else if(e.key==='ArrowLeft') go((idx+N-1)%N,false); });
+  document.addEventListener('click',function(){ closeGrid(); });
+  window.addEventListener('resize',fit);
+  go(0,false); fit();
+}
+function boot(){ var r=document.querySelector("[data-stc-proto]"); if(r) initProto(r); else setTimeout(boot,40); }
+if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",boot); else boot();
+</script>
+</body>
+</html>
